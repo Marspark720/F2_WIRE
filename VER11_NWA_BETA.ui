@@ -2913,7 +2913,7 @@ maximumSize height = 100
                </widget>
               </item>
               <item row="1" column="1">
-               <widget class="QPushButton" name="ParkXpush_2">
+               <widget class="QPushButton" name="QuadParkXpush">
                 <property name="font">
                  <font>
                   <fontweight>DemiBold</fontweight>
@@ -2943,7 +2943,7 @@ maximumSize height = 100
                </widget>
               </item>
               <item row="0" column="1">
-               <widget class="QPushButton" name="ParkPush_2">
+               <widget class="QPushButton" name="QuadParkPush">
                 <property name="font">
                  <font>
                   <fontweight>DemiBold</fontweight>
@@ -2955,7 +2955,7 @@ maximumSize height = 100
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QPushButton" name="ParkYpush_2">
+               <widget class="QPushButton" name="QuadParkYpush">
                 <property name="font">
                  <font>
                   <fontweight>DemiBold</fontweight>
