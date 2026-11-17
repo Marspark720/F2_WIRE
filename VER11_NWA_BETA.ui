@@ -524,10 +524,10 @@ QLabel[sectionHeader=&quot;true&quot;] {
       </size>
      </property>
      <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+      <enum>QFrame::Shape::StyledPanel</enum>
      </property>
      <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
+      <enum>QFrame::Shadow::Raised</enum>
      </property>
      <layout class="QVBoxLayout" name="headerLayout">
       <property name="spacing">
@@ -546,71 +546,21 @@ QLabel[sectionHeader=&quot;true&quot;] {
        <number>8</number>
       </property>
       <item>
-       <widget class="QLabel" name="label_2">
-        <property name="font">
-         <font>
-          <pointsize>20</pointsize>
-          <weight>87</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>FACET-II Wire Scanner </string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="QTabWidget" name="tabWidget">
-     <property name="styleSheet">
-      <string notr="true">QFrame {
+       <widget class="QTabWidget" name="tabWidget">
+        <property name="styleSheet">
+         <string notr="true">QFrame {
     border: none;
     border-radius: 8px;
 }</string>
-     </property>
-     <property name="currentIndex">
-      <number>0</number>
-     </property>
-     <widget class="QWidget" name="SingleWire">
-      <attribute name="title">
-       <string>Single Wire </string>
-      </attribute>
-      <layout class="QVBoxLayout" name="singleWirePageLayout">
-       <property name="spacing">
-        <number>9</number>
-       </property>
-       <property name="leftMargin">
-        <number>9</number>
-       </property>
-       <property name="topMargin">
-        <number>9</number>
-       </property>
-       <property name="rightMargin">
-        <number>9</number>
-       </property>
-       <property name="bottomMargin">
-        <number>9</number>
-       </property>
-       <item>
-        <widget class="QFrame" name="Plotframe">
-         <property name="styleSheet">
-          <string notr="true">QFrame {
-    border: none;
-    border-radius: 8px;
-}</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QVBoxLayout" name="singleWirePlotLayout">
+        </property>
+        <property name="currentIndex">
+         <number>8</number>
+        </property>
+        <widget class="QWidget" name="SingleWire">
+         <attribute name="title">
+          <string>Single Wire </string>
+         </attribute>
+         <layout class="QVBoxLayout" name="singleWirePageLayout">
           <property name="spacing">
            <number>9</number>
           </property>
@@ -627,19 +577,7 @@ QLabel[sectionHeader=&quot;true&quot;] {
            <number>9</number>
           </property>
           <item>
-           <widget class="QFrame" name="frame_33">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>44</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>60</height>
-             </size>
-            </property>
+           <widget class="QFrame" name="Plotframe">
             <property name="styleSheet">
              <string notr="true">QFrame {
     border: none;
@@ -647,139 +585,178 @@ QLabel[sectionHeader=&quot;true&quot;] {
 }</string>
             </property>
             <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
+             <enum>QFrame::Shape::StyledPanel</enum>
             </property>
             <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
+             <enum>QFrame::Shadow::Raised</enum>
             </property>
-            <layout class="QHBoxLayout" name="horizontalLayout">
+            <layout class="QVBoxLayout" name="singleWirePlotLayout">
+             <property name="spacing">
+              <number>9</number>
+             </property>
+             <property name="leftMargin">
+              <number>9</number>
+             </property>
+             <property name="topMargin">
+              <number>9</number>
+             </property>
+             <property name="rightMargin">
+              <number>9</number>
+             </property>
+             <property name="bottomMargin">
+              <number>9</number>
+             </property>
              <item>
-              <widget class="QLabel" name="Xaxis_Label">
-               <property name="font">
-                <font>
-                 <pointsize>15</pointsize>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
+              <widget class="QFrame" name="frame_33">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>44</height>
+                </size>
                </property>
-               <property name="text">
-                <string>X-Axis </string>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>60</height>
+                </size>
                </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
+               <property name="styleSheet">
+                <string notr="true">QFrame {
+    border: none;
+    border-radius: 8px;
+}</string>
                </property>
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout">
+                <item>
+                 <widget class="QLabel" name="Xaxis_Label">
+                  <property name="font">
+                   <font>
+                    <pointsize>15</pointsize>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>X-Axis </string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="Yaxis_Label">
+                  <property name="font">
+                   <font>
+                    <pointsize>15</pointsize>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Y-Axis </string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </item>
              <item>
-              <widget class="QLabel" name="Yaxis_Label">
-               <property name="font">
-                <font>
-                 <pointsize>15</pointsize>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
+              <layout class="QHBoxLayout" name="singleWirePlotRow">
+               <property name="spacing">
+                <number>9</number>
                </property>
-               <property name="text">
-                <string>Y-Axis </string>
+               <property name="leftMargin">
+                <number>0</number>
                </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
+               <property name="topMargin">
+                <number>0</number>
                </property>
-              </widget>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QFrame" name="SingleWirePlot_X">
+                 <property name="styleSheet">
+                  <string notr="true">QFrame {
+    border: none;
+    border-radius: 8px;
+}</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::Shape::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Shadow::Raised</enum>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </item>
             </layout>
            </widget>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="singleWirePlotRow">
-            <property name="spacing">
-             <number>9</number>
+           <widget class="QFrame" name="frame_3">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>220</height>
+             </size>
             </property>
-            <property name="leftMargin">
-             <number>0</number>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>300</height>
+             </size>
             </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
-            <item>
-             <widget class="QFrame" name="SingleWirePlot_X">
-              <property name="styleSheet">
-               <string notr="true">QFrame {
-    border: none;
-    border-radius: 8px;
-}</string>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QFrame" name="frame_3">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>220</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>300</height>
-          </size>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_5">
-          <item row="0" column="2" rowspan="3">
-           <widget class="QFrame" name="ButtonsFrame">
             <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
+             <enum>QFrame::Shape::StyledPanel</enum>
             </property>
             <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
+             <enum>QFrame::Shadow::Raised</enum>
             </property>
-            <widget class="QPushButton" name="ElogPush">
-             <property name="geometry">
-              <rect>
-               <x>12</x>
-               <y>2</y>
-               <width>91</width>
-               <height>141</height>
-              </rect>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>91</width>
-               <height>36</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton#l2XElogPush,
+            <layout class="QGridLayout" name="gridLayout_5">
+             <item row="0" column="2" rowspan="3">
+              <widget class="QFrame" name="ButtonsFrame">
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+               <widget class="QPushButton" name="ElogPush">
+                <property name="geometry">
+                 <rect>
+                  <x>12</x>
+                  <y>2</y>
+                  <width>91</width>
+                  <height>141</height>
+                 </rect>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>91</width>
+                  <height>36</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <fontweight>DemiBold</fontweight>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton#l2XElogPush,
 QPushButton#l2XAbortPush {
     min-width: 250px;
     max-width: 280px;
@@ -787,342 +764,338 @@ QPushButton#l2XAbortPush {
     max-height: 600px;
 }
 </string>
-             </property>
-             <property name="text">
-              <string>ELOG -&gt;</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="AbortPush">
-             <property name="geometry">
-              <rect>
-               <x>12</x>
-               <y>152</y>
-               <width>91</width>
-               <height>121</height>
-              </rect>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>91</width>
-               <height>36</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>91</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QFrame {
+                </property>
+                <property name="text">
+                 <string>ELOG -&gt;</string>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="AbortPush">
+                <property name="geometry">
+                 <rect>
+                  <x>12</x>
+                  <y>152</y>
+                  <width>91</width>
+                  <height>121</height>
+                 </rect>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>91</width>
+                  <height>36</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>91</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <fontweight>DemiBold</fontweight>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QFrame {
     border: none;
     border-radius: 8px;
 minimumSize height = 100
 maximumSize height = 100
 }</string>
-             </property>
-             <property name="text">
-              <string>Abort</string>
-             </property>
-            </widget>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QFrame" name="frame">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_4">
-             <item row="1" column="0">
-              <widget class="QLabel" name="X_label_size">
-               <property name="text">
-                <string>X Axis: </string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QLabel" name="Y_label_size">
-               <property name="text">
-                <string>Y Axis </string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="2">
-              <widget class="QLabel" name="xunit">
-               <property name="text">
-                <string>um</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QLineEdit" name="X_Size"/>
-             </item>
-             <item row="2" column="2">
-              <widget class="QLabel" name="yunit">
-               <property name="text">
-                <string>um</string>
-               </property>
+                </property>
+                <property name="text">
+                 <string>Abort</string>
+                </property>
+               </widget>
               </widget>
              </item>
              <item row="2" column="1">
-              <widget class="QLineEdit" name="Y_Size"/>
+              <widget class="QFrame" name="frame">
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_4">
+                <item row="1" column="0">
+                 <widget class="QLabel" name="X_label_size">
+                  <property name="text">
+                   <string>X Axis: </string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="Y_label_size">
+                  <property name="text">
+                   <string>Y Axis </string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="2">
+                 <widget class="QLabel" name="xunit">
+                  <property name="text">
+                   <string>um</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QLineEdit" name="X_Size"/>
+                </item>
+                <item row="2" column="2">
+                 <widget class="QLabel" name="yunit">
+                  <property name="text">
+                   <string>um</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QLineEdit" name="Y_Size"/>
+                </item>
+               </layout>
+              </widget>
              </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="0" column="1" rowspan="2">
-           <widget class="QFrame" name="ScanFrame">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_2">
+             <item row="0" column="1" rowspan="2">
+              <widget class="QFrame" name="ScanFrame">
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_2">
+                <item row="2" column="0">
+                 <widget class="QPushButton" name="ScanYpush">
+                  <property name="font">
+                   <font>
+                    <fontweight>DemiBold</fontweight>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>SCAN Y</string>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>16</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QPushButton" name="ParkXpush">
+                  <property name="font">
+                   <font>
+                    <fontweight>DemiBold</fontweight>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>PARK X</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QPushButton" name="ScanXpush">
+                  <property name="font">
+                   <font>
+                    <fontweight>DemiBold</fontweight>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>SCAN X</string>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>16</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QPushButton" name="ParkPush">
+                  <property name="font">
+                   <font>
+                    <fontweight>DemiBold</fontweight>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>PARK </string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QPushButton" name="ParkYpush">
+                  <property name="font">
+                   <font>
+                    <fontweight>DemiBold</fontweight>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>PARK Y</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <widget class="QPushButton" name="pushButton_2">
+                  <property name="text">
+                   <string>ABORT</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="2">
+                 <widget class="QPushButton" name="pushButton_4">
+                  <property name="text">
+                   <string>CLEAR X</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="2">
+                 <widget class="QPushButton" name="pushButton">
+                  <property name="text">
+                   <string>CLEAR Y</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QPushButton" name="ScanXYpush">
+                  <property name="font">
+                   <font>
+                    <fontweight>DemiBold</fontweight>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>SCAN X&amp;Y</string>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>16</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
              <item row="2" column="0">
-              <widget class="QPushButton" name="ScanYpush">
-               <property name="font">
-                <font>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>SCAN Y</string>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>16</width>
-                 <height>25</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QPushButton" name="ParkXpush">
-               <property name="font">
-                <font>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>PARK X</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0">
-              <widget class="QPushButton" name="ScanXYpush">
-               <property name="font">
-                <font>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>SCAN X&amp;Y</string>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>16</width>
-                 <height>25</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QPushButton" name="ScanXpush">
-               <property name="font">
-                <font>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>SCAN X</string>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>16</width>
-                 <height>25</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="QPushButton" name="ParkPush">
-               <property name="font">
-                <font>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>PARK </string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QPushButton" name="ParkYpush">
-               <property name="font">
-                <font>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>PARK Y</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="2">
-              <widget class="QPushButton" name="pushButton_2">
-               <property name="text">
-                <string>ABORT</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="2">
-              <widget class="QPushButton" name="pushButton_4">
-               <property name="text">
-                <string>CLEAR X</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="2">
-              <widget class="QPushButton" name="pushButton">
-               <property name="text">
-                <string>CLEAR Y</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QFrame" name="MotorFrame">
-            <property name="styleSheet">
-             <string notr="true">QFrame {
+              <widget class="QFrame" name="MotorFrame">
+               <property name="styleSheet">
+                <string notr="true">QFrame {
     border: none;
     border-radius: 8px;
 }</string>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_3">
-             <item row="1" column="1">
-              <widget class="QLineEdit" name="InnerposX"/>
-             </item>
-             <item row="1" column="2">
-              <widget class="QLineEdit" name="OutterposX"/>
-             </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="X_label">
-               <property name="text">
-                <string>X</string>
                </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QLineEdit" name="InnerposY"/>
-             </item>
-             <item row="2" column="2">
-              <widget class="QLineEdit" name="OutterposY"/>
-             </item>
-             <item row="2" column="0">
-              <widget class="QLabel" name="Y_label">
-               <property name="text">
-                <string>Y</string>
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
                </property>
-              </widget>
-             </item>
-             <item row="0" column="2">
-              <widget class="QLabel" name="Outter_Label">
-               <property name="styleSheet">
-                <string notr="true">QFrame#frame_7 {
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_3">
+                <item row="1" column="1">
+                 <widget class="QLineEdit" name="InnerposX"/>
+                </item>
+                <item row="1" column="2">
+                 <widget class="QLineEdit" name="OutterposX"/>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="X_label">
+                  <property name="text">
+                   <string>X</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QLineEdit" name="InnerposY"/>
+                </item>
+                <item row="2" column="2">
+                 <widget class="QLineEdit" name="OutterposY"/>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="Y_label">
+                  <property name="text">
+                   <string>Y</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <widget class="QLabel" name="Outter_Label">
+                  <property name="styleSheet">
+                   <string notr="true">QFrame#frame_7 {
     min-width: 400px;
     min-height: 300px;
 
     border: none;
 }</string>
-               </property>
-               <property name="text">
-                <string>Outter Motor Pos.</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
+                  </property>
+                  <property name="text">
+                   <string>Outter Motor Pos.</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLabel" name="Inner_Label">
+                  <property name="text">
+                   <string>Inner Motor Pos. </string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </item>
-             <item row="0" column="1">
-              <widget class="QLabel" name="Inner_Label">
-               <property name="text">
-                <string>Inner Motor Pos. </string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="0" column="0" rowspan="2">
-           <widget class="QFrame" name="WireSelectFrame">
-            <property name="styleSheet">
-             <string notr="true">QFrame {
+             <item row="0" column="0" rowspan="2">
+              <widget class="QFrame" name="WireSelectFrame">
+               <property name="styleSheet">
+                <string notr="true">QFrame {
     border: none;
     border-radius: 8px;
 }</string>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QGridLayout" name="gridLayout">
-             <item row="1" column="0">
-              <widget class="QProgressBar" name="progressBar_1">
-               <property name="value">
-                <number>24</number>
                </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QLabel" name="label_4">
-               <property name="text">
-                <string>Select your Wire: </string>
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
                </property>
-              </widget>
-             </item>
-             <item row="0" column="0">
-              <widget class="QLabel" name="label_3">
-               <property name="text">
-                <string>SCAN PROGRESS:</string>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
                </property>
-              </widget>
-             </item>
-             <item row="3" column="0" rowspan="2">
-              <widget class="QComboBox" name="WireDropdown">
-               <item>
-                <property name="text">
-                 <string>WIRE:LI20:3179</string>
-                </property>
-               </item>
+               <layout class="QGridLayout" name="gridLayout">
+                <item row="4" column="0" rowspan="2">
+                 <widget class="QComboBox" name="WireDropdown">
+                  <item>
+                   <property name="text">
+                    <string>WIRE:LI20:3179</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="3" column="0">
+                 <widget class="QLabel" name="label_4">
+                  <property name="text">
+                   <string>Select your Wire: </string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QProgressBar" name="progressBar_1">
+                  <property name="value">
+                   <number>24</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_3">
+                  <property name="text">
+                   <string>SCAN PROGRESS:</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </item>
             </layout>
@@ -1130,78 +1103,11 @@ maximumSize height = 100
           </item>
          </layout>
         </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="MultiWire_X">
-      <attribute name="title">
-       <string>Multi L2 'X'</string>
-      </attribute>
-      <layout class="QVBoxLayout" name="multiL2XPageLayout">
-       <property name="spacing">
-        <number>9</number>
-       </property>
-       <property name="leftMargin">
-        <number>9</number>
-       </property>
-       <property name="topMargin">
-        <number>9</number>
-       </property>
-       <property name="rightMargin">
-        <number>9</number>
-       </property>
-       <property name="bottomMargin">
-        <number>9</number>
-       </property>
-       <item>
-        <widget class="QFrame" name="MultiwireX">
-         <property name="styleSheet">
-          <string notr="true">QFrame {
-    border: none;
-    border-radius: 8px;
-}</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_6">
-          <item row="0" column="0">
-           <widget class="QFrame" name="frame_7">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QFrame" name="frame_11">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>145</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>190</height>
-          </size>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QHBoxLayout" name="multiL2XControlsLayout">
+        <widget class="QWidget" name="MultiWire_X">
+         <attribute name="title">
+          <string>Multi L2 'X'</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="multiL2XPageLayout">
           <property name="spacing">
            <number>9</number>
           </property>
@@ -1218,102 +1124,27 @@ maximumSize height = 100
            <number>9</number>
           </property>
           <item>
-           <widget class="QFrame" name="frame_12">
+           <widget class="QFrame" name="MultiwireX">
+            <property name="styleSheet">
+             <string notr="true">QFrame {
+    border: none;
+    border-radius: 8px;
+}</string>
+            </property>
             <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
+             <enum>QFrame::Shape::StyledPanel</enum>
             </property>
             <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
+             <enum>QFrame::Shadow::Raised</enum>
             </property>
-            <layout class="QGridLayout" name="gridLayout_7">
-             <item row="2" column="0">
-              <widget class="QPushButton" name="l2XScan3Push">
-               <property name="styleSheet">
-                <string notr="true">QPushButton {
-    background-color: rgb(178, 22, 82);
-    color: white;
-}
-
-QPushButton:hover {
-    background-color: rgb(198, 42, 102);
-}
-
-QPushButton:pressed {
-    background-color: rgb(148, 12, 62);
-}</string>
+            <layout class="QGridLayout" name="gridLayout_6">
+             <item row="0" column="0">
+              <widget class="QFrame" name="frame_7">
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
                </property>
-               <property name="text">
-                <string>Scan | Wire LI11:744:X</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QPushButton" name="l2XScan4Push">
-               <property name="styleSheet">
-                <string notr="true">QPushButton {
-    background-color: rgb(178, 22, 82);
-    color: white;
-}
-
-QPushButton:hover {
-    background-color: rgb(198, 42, 102);
-}
-
-QPushButton:pressed {
-    background-color: rgb(148, 12, 62);
-}</string>
-               </property>
-               <property name="text">
-                <string>Scan | Wire LI12:214:X</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QPushButton" name="l2XScan1Push">
-               <property name="styleSheet">
-                <string notr="true">QPushButton {
-    background-color: rgb(178, 22, 82);
-    color: white;
-}
-
-QPushButton:hover {
-    background-color: rgb(198, 42, 102);
-}
-
-QPushButton:pressed {
-    background-color: rgb(148, 12, 62);
-}</string>
-               </property>
-               <property name="text">
-                <string>Scan | Wire LI11:444:X</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QPushButton" name="l2XScan2Push">
-               <property name="styleSheet">
-                <string notr="true">QPushButton {
-    background-color: rgb(178, 22, 82);
-    color: white;
-}
-
-QPushButton:hover {
-    background-color: rgb(198, 42, 102);
-}
-
-QPushButton:pressed {
-    background-color: rgb(148, 12, 62);
-}</string>
-               </property>
-               <property name="text">
-                <string>Scan | Wire LI11:614:X</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0" colspan="2">
-              <widget class="QProgressBar" name="progressBar_2">
-               <property name="value">
-                <number>24</number>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
                </property>
               </widget>
              </item>
@@ -1321,30 +1152,169 @@ QPushButton:pressed {
            </widget>
           </item>
           <item>
-           <widget class="QFrame" name="frame_6">
+           <widget class="QFrame" name="frame_11">
             <property name="minimumSize">
              <size>
-              <width>190</width>
-              <height>0</height>
+              <width>0</width>
+              <height>145</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>260</width>
-              <height>16777215</height>
+              <width>16777215</width>
+              <height>190</height>
              </size>
             </property>
             <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
+             <enum>QFrame::Shape::StyledPanel</enum>
             </property>
             <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
+             <enum>QFrame::Shadow::Raised</enum>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout_8">
+            <layout class="QHBoxLayout" name="multiL2XControlsLayout">
+             <property name="spacing">
+              <number>9</number>
+             </property>
+             <property name="leftMargin">
+              <number>9</number>
+             </property>
+             <property name="topMargin">
+              <number>9</number>
+             </property>
+             <property name="rightMargin">
+              <number>9</number>
+             </property>
+             <property name="bottomMargin">
+              <number>9</number>
+             </property>
              <item>
-              <widget class="QPushButton" name="l2XElogPush">
-               <property name="styleSheet">
-                <string notr="true">QPushButton {
+              <widget class="QFrame" name="frame_12">
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_7">
+                <item row="2" column="0">
+                 <widget class="QPushButton" name="l2XScan3Push">
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
+    background-color: rgb(178, 22, 82);
+    color: white;
+}
+
+QPushButton:hover {
+    background-color: rgb(198, 42, 102);
+}
+
+QPushButton:pressed {
+    background-color: rgb(148, 12, 62);
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Scan | Wire LI11:744:X</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QPushButton" name="l2XScan4Push">
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
+    background-color: rgb(178, 22, 82);
+    color: white;
+}
+
+QPushButton:hover {
+    background-color: rgb(198, 42, 102);
+}
+
+QPushButton:pressed {
+    background-color: rgb(148, 12, 62);
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Scan | Wire LI12:214:X</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QPushButton" name="l2XScan1Push">
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
+    background-color: rgb(178, 22, 82);
+    color: white;
+}
+
+QPushButton:hover {
+    background-color: rgb(198, 42, 102);
+}
+
+QPushButton:pressed {
+    background-color: rgb(148, 12, 62);
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Scan | Wire LI11:444:X</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QPushButton" name="l2XScan2Push">
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
+    background-color: rgb(178, 22, 82);
+    color: white;
+}
+
+QPushButton:hover {
+    background-color: rgb(198, 42, 102);
+}
+
+QPushButton:pressed {
+    background-color: rgb(148, 12, 62);
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Scan | Wire LI11:614:X</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0" colspan="2">
+                 <widget class="QProgressBar" name="progressBar_2">
+                  <property name="value">
+                   <number>24</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_6">
+               <property name="minimumSize">
+                <size>
+                 <width>190</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>260</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_8">
+                <item>
+                 <widget class="QPushButton" name="l2XElogPush">
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
     background-color: rgb(221, 232, 243);
     color: rgb(41, 76, 107);
 }
@@ -1356,16 +1326,16 @@ QPushButton:hover {
 QPushButton:pressed {
     background-color: rgb(221, 232, 243);
 }</string>
-               </property>
-               <property name="text">
-                <string>Send to Elog</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="l2XScanAllPush">
-               <property name="styleSheet">
-                <string notr="true">QPushButton {
+                  </property>
+                  <property name="text">
+                   <string>Send to Elog</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="l2XScanAllPush">
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
     background-color: rgb(178, 22, 82);
     color: white;
 }
@@ -1377,997 +1347,1000 @@ QPushButton:hover {
 QPushButton:pressed {
     background-color: rgb(148, 12, 62);
 }</string>
+                  </property>
+                  <property name="text">
+                   <string>Scan All X</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="l2XAbortPush">
+                  <property name="styleSheet">
+                   <string notr="true">QFrame {
+    border: none;
+    border-radius: 8px;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Abort</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="Multiwire_Y">
+         <attribute name="title">
+          <string>Multi L2 'Y'</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="multiL2YPageLayout">
+          <property name="spacing">
+           <number>9</number>
+          </property>
+          <property name="leftMargin">
+           <number>9</number>
+          </property>
+          <property name="topMargin">
+           <number>9</number>
+          </property>
+          <property name="rightMargin">
+           <number>9</number>
+          </property>
+          <property name="bottomMargin">
+           <number>9</number>
+          </property>
+          <item>
+           <widget class="QFrame" name="MultiwireX_2">
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_8">
+             <item row="0" column="0">
+              <widget class="QFrame" name="frame_13">
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
                </property>
-               <property name="text">
-                <string>Scan All X</string>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
                </property>
               </widget>
              </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame_17">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>145</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>190</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="multiL2YControlsLayout">
+             <property name="spacing">
+              <number>9</number>
+             </property>
+             <property name="leftMargin">
+              <number>9</number>
+             </property>
+             <property name="topMargin">
+              <number>9</number>
+             </property>
+             <property name="rightMargin">
+              <number>9</number>
+             </property>
+             <property name="bottomMargin">
+              <number>9</number>
+             </property>
              <item>
-              <widget class="QPushButton" name="l2XAbortPush">
+              <widget class="QFrame" name="frame_18">
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_9">
+                <item row="2" column="0">
+                 <widget class="QPushButton" name="yScan3Push">
+                  <property name="text">
+                   <string>Scan | Wire LI11:744:Y</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QPushButton" name="yScan2Push">
+                  <property name="text">
+                   <string>Scan | Wire LI11:614:Y</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QPushButton" name="yScan4Push">
+                  <property name="text">
+                   <string>Scan | Wire LI12:214:Y</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QPushButton" name="yScan1Push">
+                  <property name="text">
+                   <string>Scan | Wire LI11:444:Y</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0" colspan="2">
+                 <widget class="QProgressBar" name="progressBar_3">
+                  <property name="value">
+                   <number>24</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_YActions">
+               <property name="minimumSize">
+                <size>
+                 <width>190</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>260</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_7">
+                <item>
+                 <widget class="QPushButton" name="yElogPush">
+                  <property name="text">
+                   <string>Send to Elog</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="yScanAllPush">
+                  <property name="text">
+                   <string>Scan All Y</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="yAbortPush">
+                  <property name="text">
+                   <string>Abort</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="MultiL3_X">
+         <attribute name="title">
+          <string>Multi L3 'X'</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="multiL3XPageLayout">
+          <property name="spacing">
+           <number>9</number>
+          </property>
+          <property name="leftMargin">
+           <number>9</number>
+          </property>
+          <property name="topMargin">
+           <number>9</number>
+          </property>
+          <property name="rightMargin">
+           <number>9</number>
+          </property>
+          <property name="bottomMargin">
+           <number>9</number>
+          </property>
+          <item>
+           <widget class="QFrame" name="MultiwireL3X">
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+            <layout class="QGridLayout" name="multiL3XPlotLayout">
+             <item row="0" column="0">
+              <widget class="QFrame" name="l3XPlot1">
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="l3XControlsFrame">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>145</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>190</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="multiL3XControlsLayout">
+             <property name="spacing">
+              <number>9</number>
+             </property>
+             <property name="leftMargin">
+              <number>9</number>
+             </property>
+             <property name="topMargin">
+              <number>9</number>
+             </property>
+             <property name="rightMargin">
+              <number>9</number>
+             </property>
+             <property name="bottomMargin">
+              <number>9</number>
+             </property>
+             <item>
+              <widget class="QFrame" name="l3XScanFrame">
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+               <layout class="QGridLayout" name="l3XScanButtonsLayout">
+                <item row="1" column="1">
+                 <widget class="QPushButton" name="l3XScan2Push">
+                  <property name="text">
+                   <string>Scan | Wire LI19:144:X</string>
+                  </property>
+                  <property name="actionRole" stdset="0">
+                   <string>scan</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QPushButton" name="l3XScan1Push">
+                  <property name="text">
+                   <string>Scan | Wire LI18:944:X</string>
+                  </property>
+                  <property name="actionRole" stdset="0">
+                   <string>scan</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QPushButton" name="l3XScan3Push">
+                  <property name="text">
+                   <string>Scan | Wire LI19:244:X</string>
+                  </property>
+                  <property name="actionRole" stdset="0">
+                   <string>scan</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QPushButton" name="l3XScan4Push">
+                  <property name="text">
+                   <string>Scan | Wire LI19:344:X</string>
+                  </property>
+                  <property name="actionRole" stdset="0">
+                   <string>scan</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0" colspan="2">
+                 <widget class="QProgressBar" name="progressBar_4">
+                  <property name="value">
+                   <number>24</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="l3XActionsFrame">
+               <property name="minimumSize">
+                <size>
+                 <width>190</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>260</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_6">
+                <item>
+                 <widget class="QPushButton" name="l3XElogPush">
+                  <property name="text">
+                   <string>Send to Elog</string>
+                  </property>
+                  <property name="actionRole" stdset="0">
+                   <string>elog</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="l3XScanAllPush">
+                  <property name="text">
+                   <string>Scan All X</string>
+                  </property>
+                  <property name="actionRole" stdset="0">
+                   <string>scan</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="l3XAbortPush">
+                  <property name="text">
+                   <string>Abort</string>
+                  </property>
+                  <property name="actionRole" stdset="0">
+                   <string>abort</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="MultiL3_Y">
+         <attribute name="title">
+          <string>Multi L3 'Y'</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="multiL3YPageLayout">
+          <property name="spacing">
+           <number>9</number>
+          </property>
+          <property name="leftMargin">
+           <number>9</number>
+          </property>
+          <property name="topMargin">
+           <number>9</number>
+          </property>
+          <property name="rightMargin">
+           <number>9</number>
+          </property>
+          <property name="bottomMargin">
+           <number>9</number>
+          </property>
+          <item>
+           <widget class="QFrame" name="MultiwireL3Y">
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+            <layout class="QGridLayout" name="multiL3YPlotLayout">
+             <item row="0" column="0">
+              <widget class="QFrame" name="l3YPlot1">
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="l3YControlsFrame">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>145</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>190</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="multiL3YControlsLayout">
+             <property name="spacing">
+              <number>9</number>
+             </property>
+             <property name="leftMargin">
+              <number>9</number>
+             </property>
+             <property name="topMargin">
+              <number>9</number>
+             </property>
+             <property name="rightMargin">
+              <number>9</number>
+             </property>
+             <property name="bottomMargin">
+              <number>9</number>
+             </property>
+             <item>
+              <widget class="QFrame" name="l3YScanFrame">
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+               <layout class="QGridLayout" name="l3YScanButtonsLayout">
+                <item row="1" column="0">
+                 <widget class="QPushButton" name="l3YScan1Push">
+                  <property name="text">
+                   <string>Scan | Wire LI18:944:Y</string>
+                  </property>
+                  <property name="actionRole" stdset="0">
+                   <string>scan</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QPushButton" name="l3YScan3Push">
+                  <property name="text">
+                   <string>Scan | Wire LI19:244:Y</string>
+                  </property>
+                  <property name="actionRole" stdset="0">
+                   <string>scan</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QPushButton" name="l3YScan2Push">
+                  <property name="text">
+                   <string>Scan | Wire LI19:144:Y</string>
+                  </property>
+                  <property name="actionRole" stdset="0">
+                   <string>scan</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QPushButton" name="l3YScan4Push">
+                  <property name="text">
+                   <string>Scan | Wire LI19:344:Y</string>
+                  </property>
+                  <property name="actionRole" stdset="0">
+                   <string>scan</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0" colspan="2">
+                 <widget class="QProgressBar" name="progressBar_5">
+                  <property name="value">
+                   <number>24</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="l3YActionsFrame">
+               <property name="minimumSize">
+                <size>
+                 <width>190</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>260</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_5">
+                <item>
+                 <widget class="QPushButton" name="l3YElogPush">
+                  <property name="text">
+                   <string>Send to Elog</string>
+                  </property>
+                  <property name="actionRole" stdset="0">
+                   <string>elog</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="l3YScanAllPush">
+                  <property name="text">
+                   <string>Scan All Y</string>
+                  </property>
+                  <property name="actionRole" stdset="0">
+                   <string>scan</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="l3YAbortPush">
+                  <property name="text">
+                   <string>Abort</string>
+                  </property>
+                  <property name="actionRole" stdset="0">
+                   <string>abort</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="EmittanceMatching">
+         <attribute name="title">
+          <string>Emit / Match</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="emittancePageLayout">
+          <property name="spacing">
+           <number>9</number>
+          </property>
+          <property name="leftMargin">
+           <number>9</number>
+          </property>
+          <property name="topMargin">
+           <number>9</number>
+          </property>
+          <property name="rightMargin">
+           <number>9</number>
+          </property>
+          <property name="bottomMargin">
+           <number>9</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="emittancePageTitle">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Transverse Emittance &amp; Matching</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+            <property name="sectionHeader" stdset="0">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame_32">
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <item>
+              <widget class="QFrame" name="l2EmittanceSection">
                <property name="styleSheet">
                 <string notr="true">QFrame {
     border: none;
     border-radius: 8px;
 }</string>
                </property>
-               <property name="text">
-                <string>Abort</string>
+               <property name="emittanceSection" stdset="0">
+                <bool>true</bool>
                </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="Multiwire_Y">
-      <attribute name="title">
-       <string>Multi L2 'Y'</string>
-      </attribute>
-      <layout class="QVBoxLayout" name="multiL2YPageLayout">
-       <property name="spacing">
-        <number>9</number>
-       </property>
-       <property name="leftMargin">
-        <number>9</number>
-       </property>
-       <property name="topMargin">
-        <number>9</number>
-       </property>
-       <property name="rightMargin">
-        <number>9</number>
-       </property>
-       <property name="bottomMargin">
-        <number>9</number>
-       </property>
-       <item>
-        <widget class="QFrame" name="MultiwireX_2">
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_8">
-          <item row="0" column="0">
-           <widget class="QFrame" name="frame_13">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QFrame" name="frame_17">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>145</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>190</height>
-          </size>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QHBoxLayout" name="multiL2YControlsLayout">
-          <property name="spacing">
-           <number>9</number>
-          </property>
-          <property name="leftMargin">
-           <number>9</number>
-          </property>
-          <property name="topMargin">
-           <number>9</number>
-          </property>
-          <property name="rightMargin">
-           <number>9</number>
-          </property>
-          <property name="bottomMargin">
-           <number>9</number>
-          </property>
-          <item>
-           <widget class="QFrame" name="frame_18">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_9">
-             <item row="2" column="0">
-              <widget class="QPushButton" name="yScan3Push">
-               <property name="text">
-                <string>Scan | Wire LI11:744:Y</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QPushButton" name="yScan2Push">
-               <property name="text">
-                <string>Scan | Wire LI11:614:Y</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QPushButton" name="yScan4Push">
-               <property name="text">
-                <string>Scan | Wire LI12:214:Y</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QPushButton" name="yScan1Push">
-               <property name="text">
-                <string>Scan | Wire LI11:444:Y</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0" colspan="2">
-              <widget class="QProgressBar" name="progressBar_3">
-               <property name="value">
-                <number>24</number>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QFrame" name="frame_YActions">
-            <property name="minimumSize">
-             <size>
-              <width>190</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>260</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_7">
-             <item>
-              <widget class="QPushButton" name="yElogPush">
-               <property name="text">
-                <string>Send to Elog</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="yScanAllPush">
-               <property name="text">
-                <string>Scan All Y</string>
-               </property>
+               <layout class="QGridLayout" name="gridLayout_12">
+                <item row="10" column="2">
+                 <widget class="QLineEdit" name="l2EmittanceValue_2">
+                  <property name="placeholderText">
+                   <string>εₙ  [mm·mrad]</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="10" column="1">
+                 <widget class="QLineEdit" name="l2EmittanceValue">
+                  <property name="placeholderText">
+                   <string>εₙ  [mm·mrad]</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="10" column="3" rowspan="3">
+                 <layout class="QVBoxLayout" name="l2EllipseXLayout">
+                  <item>
+                   <widget class="QFrame" name="l2EmittanceEllipseX">
+                    <property name="minimumSize">
+                     <size>
+                      <width>220</width>
+                      <height>190</height>
+                     </size>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Shape::StyledPanel</enum>
+                    </property>
+                    <property name="ellipsePlot" stdset="0">
+                     <string>x</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="10" column="0">
+                 <widget class="QLabel" name="l2EmittanceLabel">
+                  <property name="text">
+                   <string>Emittance  ε</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="10" column="4" rowspan="3">
+                 <layout class="QVBoxLayout" name="l2EllipseYLayout">
+                  <item>
+                   <widget class="QFrame" name="l2EmittanceEllipseY">
+                    <property name="minimumSize">
+                     <size>
+                      <width>220</width>
+                      <height>190</height>
+                     </size>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Shape::StyledPanel</enum>
+                    </property>
+                    <property name="ellipsePlot" stdset="0">
+                     <string>y</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="12" column="0">
+                 <widget class="QLabel" name="l2MatchedEmittanceLabel">
+                  <property name="text">
+                   <string>Matched emittance  M·ε</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0" colspan="3">
+                 <widget class="QLabel" name="l2EmittanceHeader">
+                  <property name="text">
+                   <string>L2 Beam Parameters                                X              |            Y</string>
+                  </property>
+                  <property name="sectionHeader" stdset="0">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="12" column="2">
+                 <widget class="QLineEdit" name="l2MatchedEmittanceValue_2">
+                  <property name="placeholderText">
+                   <string>M·εₙ  [mm·mrad]</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="12" column="1">
+                 <widget class="QLineEdit" name="l2MatchedEmittanceValue">
+                  <property name="placeholderText">
+                   <string>M·εₙ  [mm·mrad]</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="11" column="0">
+                 <widget class="QLabel" name="l2MatchingLabel">
+                  <property name="text">
+                   <string>Matching  M</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="11" column="1">
+                 <widget class="QLineEdit" name="l2MatchingValue">
+                  <property name="placeholderText">
+                   <string>M</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="11" column="2">
+                 <widget class="QLineEdit" name="l2MatchingValue_2">
+                  <property name="placeholderText">
+                   <string>M</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <widget class="QPushButton" name="l2CalcEmitYPush">
+                  <property name="text">
+                   <string>Calc Emit Y</string>
+                  </property>
+                  <property name="actionRole" stdset="0">
+                   <string>calc</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QPushButton" name="l2CalcEmitXPush">
+                  <property name="text">
+                   <string>Calc Emit X</string>
+                  </property>
+                  <property name="actionRole" stdset="0">
+                   <string>calc</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="3">
+                 <widget class="QLabel" name="l2EllipseXLabel">
+                  <property name="text">
+                   <string>L2 X Emittance Ellipse</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                  <property name="plotHeader" stdset="0">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="4">
+                 <widget class="QLabel" name="l2EllipseYLabel">
+                  <property name="text">
+                   <string>L2 Y Emittance Ellipse</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                  <property name="plotHeader" stdset="0">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="yAbortPush">
-               <property name="text">
-                <string>Abort</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="MultiL3_X">
-      <attribute name="title">
-       <string>Multi L3 'X'</string>
-      </attribute>
-      <layout class="QVBoxLayout" name="multiL3XPageLayout">
-       <property name="spacing">
-        <number>9</number>
-       </property>
-       <property name="leftMargin">
-        <number>9</number>
-       </property>
-       <property name="topMargin">
-        <number>9</number>
-       </property>
-       <property name="rightMargin">
-        <number>9</number>
-       </property>
-       <property name="bottomMargin">
-        <number>9</number>
-       </property>
-       <item>
-        <widget class="QFrame" name="MultiwireL3X">
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QGridLayout" name="multiL3XPlotLayout">
-          <item row="0" column="0">
-           <widget class="QFrame" name="l3XPlot1">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QFrame" name="l3XControlsFrame">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>145</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>190</height>
-          </size>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QHBoxLayout" name="multiL3XControlsLayout">
-          <property name="spacing">
-           <number>9</number>
-          </property>
-          <property name="leftMargin">
-           <number>9</number>
-          </property>
-          <property name="topMargin">
-           <number>9</number>
-          </property>
-          <property name="rightMargin">
-           <number>9</number>
-          </property>
-          <property name="bottomMargin">
-           <number>9</number>
-          </property>
-          <item>
-           <widget class="QFrame" name="l3XScanFrame">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QGridLayout" name="l3XScanButtonsLayout">
-             <item row="1" column="1">
-              <widget class="QPushButton" name="l3XScan2Push">
-               <property name="text">
-                <string>Scan | Wire LI19:144:X</string>
-               </property>
-               <property name="actionRole" stdset="0">
-                <string>scan</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QPushButton" name="l3XScan1Push">
-               <property name="text">
-                <string>Scan | Wire LI18:944:X</string>
-               </property>
-               <property name="actionRole" stdset="0">
-                <string>scan</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QPushButton" name="l3XScan3Push">
-               <property name="text">
-                <string>Scan | Wire LI19:244:X</string>
-               </property>
-               <property name="actionRole" stdset="0">
-                <string>scan</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QPushButton" name="l3XScan4Push">
-               <property name="text">
-                <string>Scan | Wire LI19:344:X</string>
-               </property>
-               <property name="actionRole" stdset="0">
-                <string>scan</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0" colspan="2">
-              <widget class="QProgressBar" name="progressBar_4">
-               <property name="value">
-                <number>24</number>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QFrame" name="l3XActionsFrame">
-            <property name="minimumSize">
-             <size>
-              <width>190</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>260</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_6">
-             <item>
-              <widget class="QPushButton" name="l3XElogPush">
-               <property name="text">
-                <string>Send to Elog</string>
-               </property>
-               <property name="actionRole" stdset="0">
-                <string>elog</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="l3XScanAllPush">
-               <property name="text">
-                <string>Scan All X</string>
-               </property>
-               <property name="actionRole" stdset="0">
-                <string>scan</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="l3XAbortPush">
-               <property name="text">
-                <string>Abort</string>
-               </property>
-               <property name="actionRole" stdset="0">
-                <string>abort</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="MultiL3_Y">
-      <attribute name="title">
-       <string>Multi L3 'Y'</string>
-      </attribute>
-      <layout class="QVBoxLayout" name="multiL3YPageLayout">
-       <property name="spacing">
-        <number>9</number>
-       </property>
-       <property name="leftMargin">
-        <number>9</number>
-       </property>
-       <property name="topMargin">
-        <number>9</number>
-       </property>
-       <property name="rightMargin">
-        <number>9</number>
-       </property>
-       <property name="bottomMargin">
-        <number>9</number>
-       </property>
-       <item>
-        <widget class="QFrame" name="MultiwireL3Y">
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QGridLayout" name="multiL3YPlotLayout">
-          <item row="0" column="0">
-           <widget class="QFrame" name="l3YPlot1">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QFrame" name="l3YControlsFrame">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>145</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>190</height>
-          </size>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QHBoxLayout" name="multiL3YControlsLayout">
-          <property name="spacing">
-           <number>9</number>
-          </property>
-          <property name="leftMargin">
-           <number>9</number>
-          </property>
-          <property name="topMargin">
-           <number>9</number>
-          </property>
-          <property name="rightMargin">
-           <number>9</number>
-          </property>
-          <property name="bottomMargin">
-           <number>9</number>
-          </property>
-          <item>
-           <widget class="QFrame" name="l3YScanFrame">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QGridLayout" name="l3YScanButtonsLayout">
-             <item row="1" column="0">
-              <widget class="QPushButton" name="l3YScan1Push">
-               <property name="text">
-                <string>Scan | Wire LI18:944:Y</string>
-               </property>
-               <property name="actionRole" stdset="0">
-                <string>scan</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QPushButton" name="l3YScan3Push">
-               <property name="text">
-                <string>Scan | Wire LI19:244:Y</string>
-               </property>
-               <property name="actionRole" stdset="0">
-                <string>scan</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QPushButton" name="l3YScan2Push">
-               <property name="text">
-                <string>Scan | Wire LI19:144:Y</string>
-               </property>
-               <property name="actionRole" stdset="0">
-                <string>scan</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QPushButton" name="l3YScan4Push">
-               <property name="text">
-                <string>Scan | Wire LI19:344:Y</string>
-               </property>
-               <property name="actionRole" stdset="0">
-                <string>scan</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0" colspan="2">
-              <widget class="QProgressBar" name="progressBar_5">
-               <property name="value">
-                <number>24</number>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QFrame" name="l3YActionsFrame">
-            <property name="minimumSize">
-             <size>
-              <width>190</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>260</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_5">
-             <item>
-              <widget class="QPushButton" name="l3YElogPush">
-               <property name="text">
-                <string>Send to Elog</string>
-               </property>
-               <property name="actionRole" stdset="0">
-                <string>elog</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="l3YScanAllPush">
-               <property name="text">
-                <string>Scan All Y</string>
-               </property>
-               <property name="actionRole" stdset="0">
-                <string>scan</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="l3YAbortPush">
-               <property name="text">
-                <string>Abort</string>
-               </property>
-               <property name="actionRole" stdset="0">
-                <string>abort</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="EmittanceMatching">
-      <attribute name="title">
-       <string>Emit / Match</string>
-      </attribute>
-      <layout class="QVBoxLayout" name="emittancePageLayout">
-       <property name="spacing">
-        <number>9</number>
-       </property>
-       <property name="leftMargin">
-        <number>9</number>
-       </property>
-       <property name="topMargin">
-        <number>9</number>
-       </property>
-       <property name="rightMargin">
-        <number>9</number>
-       </property>
-       <property name="bottomMargin">
-        <number>9</number>
-       </property>
-       <item>
-        <widget class="QLabel" name="emittancePageTitle">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>24</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Transverse Emittance &amp; Matching</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="sectionHeader" stdset="0">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QFrame" name="frame_32">
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_3">
-          <item>
-           <widget class="QFrame" name="l2EmittanceSection">
-            <property name="styleSheet">
-             <string notr="true">QFrame {
+              <widget class="QFrame" name="l3EmittanceSection">
+               <property name="styleSheet">
+                <string notr="true">QFrame {
     border: none;
     border-radius: 8px;
 }</string>
-            </property>
-            <property name="emittanceSection" stdset="0">
-             <bool>true</bool>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_12">
-             <item row="10" column="2">
-              <widget class="QLineEdit" name="l2EmittanceValue_2">
-               <property name="placeholderText">
-                <string>εₙ  [mm·mrad]</string>
                </property>
-              </widget>
-             </item>
-             <item row="10" column="1">
-              <widget class="QLineEdit" name="l2EmittanceValue">
-               <property name="placeholderText">
-                <string>εₙ  [mm·mrad]</string>
-               </property>
-              </widget>
-             </item>
-             <item row="10" column="3" rowspan="3">
-              <layout class="QVBoxLayout" name="l2EllipseXLayout">
-               <item>
-                <widget class="QFrame" name="l2EmittanceEllipseX">
-                 <property name="minimumSize">
-                  <size>
-                   <width>220</width>
-                   <height>190</height>
-                  </size>
-                 </property>
-                 <property name="frameShape">
-                  <enum>QFrame::StyledPanel</enum>
-                 </property>
-                 <property name="ellipsePlot" stdset="0">
-                  <string>x</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="10" column="0">
-              <widget class="QLabel" name="l2EmittanceLabel">
-               <property name="text">
-                <string>Emittance  ε</string>
-               </property>
-              </widget>
-             </item>
-             <item row="10" column="4" rowspan="3">
-              <layout class="QVBoxLayout" name="l2EllipseYLayout">
-               <item>
-                <widget class="QFrame" name="l2EmittanceEllipseY">
-                 <property name="minimumSize">
-                  <size>
-                   <width>220</width>
-                   <height>190</height>
-                  </size>
-                 </property>
-                 <property name="frameShape">
-                  <enum>QFrame::StyledPanel</enum>
-                 </property>
-                 <property name="ellipsePlot" stdset="0">
-                  <string>y</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="12" column="0">
-              <widget class="QLabel" name="l2MatchedEmittanceLabel">
-               <property name="text">
-                <string>Matched emittance  M·ε</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0" colspan="3">
-              <widget class="QLabel" name="l2EmittanceHeader">
-               <property name="text">
-                <string>L2 Beam Parameters                                X              |            Y</string>
-               </property>
-               <property name="sectionHeader" stdset="0">
+               <property name="emittanceSection" stdset="0">
                 <bool>true</bool>
                </property>
-              </widget>
-             </item>
-             <item row="12" column="2">
-              <widget class="QLineEdit" name="l2MatchedEmittanceValue_2">
-               <property name="placeholderText">
-                <string>M·εₙ  [mm·mrad]</string>
-               </property>
-              </widget>
-             </item>
-             <item row="12" column="1">
-              <widget class="QLineEdit" name="l2MatchedEmittanceValue">
-               <property name="placeholderText">
-                <string>M·εₙ  [mm·mrad]</string>
-               </property>
-              </widget>
-             </item>
-             <item row="11" column="0">
-              <widget class="QLabel" name="l2MatchingLabel">
-               <property name="text">
-                <string>Matching  M</string>
-               </property>
-              </widget>
-             </item>
-             <item row="11" column="1">
-              <widget class="QLineEdit" name="l2MatchingValue">
-               <property name="placeholderText">
-                <string>M</string>
-               </property>
-              </widget>
-             </item>
-             <item row="11" column="2">
-              <widget class="QLineEdit" name="l2MatchingValue_2">
-               <property name="placeholderText">
-                <string>M</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="2">
-              <widget class="QPushButton" name="l2CalcEmitYPush">
-               <property name="text">
-                <string>Calc Emit Y</string>
-               </property>
-               <property name="actionRole" stdset="0">
-                <string>calc</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="QPushButton" name="l2CalcEmitXPush">
-               <property name="text">
-                <string>Calc Emit X</string>
-               </property>
-               <property name="actionRole" stdset="0">
-                <string>calc</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="3">
-              <widget class="QLabel" name="l2EllipseXLabel">
-               <property name="text">
-                <string>L2 X Emittance Ellipse</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-               <property name="plotHeader" stdset="0">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="4">
-              <widget class="QLabel" name="l2EllipseYLabel">
-               <property name="text">
-                <string>L2 Y Emittance Ellipse</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-               <property name="plotHeader" stdset="0">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QFrame" name="l3EmittanceSection">
-            <property name="styleSheet">
-             <string notr="true">QFrame {
-    border: none;
-    border-radius: 8px;
-}</string>
-            </property>
-            <property name="emittanceSection" stdset="0">
-             <bool>true</bool>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_13">
-             <item row="11" column="2">
-              <widget class="QLineEdit" name="l3EmittanceValue_2">
-               <property name="placeholderText">
-                <string>εₙ  [mm·mrad]</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="2">
-              <widget class="QPushButton" name="l3CalcEmitYPush">
-               <property name="text">
-                <string>Calc Emit Y</string>
-               </property>
-               <property name="actionRole" stdset="0">
-                <string>calc</string>
-               </property>
-              </widget>
-             </item>
-             <item row="12" column="2">
-              <widget class="QLineEdit" name="l3MatchingValue_2">
-               <property name="placeholderText">
-                <string>M</string>
-               </property>
-              </widget>
-             </item>
-             <item row="13" column="1">
-              <widget class="QLineEdit" name="l3MatchedEmittanceValue">
-               <property name="placeholderText">
-                <string>M·εₙ  [mm·mrad]</string>
-               </property>
-              </widget>
-             </item>
-             <item row="12" column="1">
-              <widget class="QLineEdit" name="l3MatchingValue">
-               <property name="placeholderText">
-                <string>M</string>
-               </property>
-              </widget>
-             </item>
-             <item row="13" column="2">
-              <widget class="QLineEdit" name="l3MatchedEmittanceValue_2">
-               <property name="placeholderText">
-                <string>M·εₙ  [mm·mrad]</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="QPushButton" name="l3CalcEmitXPush">
-               <property name="text">
-                <string>Calc Emit X</string>
-               </property>
-               <property name="actionRole" stdset="0">
-                <string>calc</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="4">
-              <widget class="QLabel" name="l3EllipseYLabel">
-               <property name="text">
-                <string>L3 Y Emittance Ellipse</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-               <property name="plotHeader" stdset="0">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="0" colspan="3">
-              <widget class="QLabel" name="l3EmittanceHeader">
-               <property name="text">
-                <string>L3 Beam Parameters                                X              |            Y</string>
-               </property>
-               <property name="sectionHeader" stdset="0">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="13" column="0">
-              <widget class="QLabel" name="l3MatchedEmittanceLabel">
-               <property name="text">
-                <string>Matched emittance  M·ε</string>
-               </property>
-              </widget>
-             </item>
-             <item row="11" column="4" rowspan="3">
-              <layout class="QVBoxLayout" name="l3EllipseYLayout">
-               <item>
-                <widget class="QFrame" name="l3EmittanceEllipseY">
-                 <property name="minimumSize">
-                  <size>
-                   <width>220</width>
-                   <height>190</height>
-                  </size>
-                 </property>
-                 <property name="frameShape">
-                  <enum>QFrame::StyledPanel</enum>
-                 </property>
-                 <property name="ellipsePlot" stdset="0">
-                  <string>y</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="12" column="0">
-              <widget class="QLabel" name="l3MatchingLabel">
-               <property name="text">
-                <string>Matching  M</string>
-               </property>
-              </widget>
-             </item>
-             <item row="11" column="0">
-              <widget class="QLabel" name="l3EmittanceLabel">
-               <property name="text">
-                <string>Emittance  ε</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="3">
-              <widget class="QLabel" name="l3EllipseXLabel">
-               <property name="text">
-                <string>L3 X Emittance Ellipse</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-               <property name="plotHeader" stdset="0">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="11" column="3" rowspan="3">
-              <layout class="QVBoxLayout" name="l3EllipseXLayout">
-               <item>
-                <widget class="QFrame" name="l3EmittanceEllipseX">
-                 <property name="minimumSize">
-                  <size>
-                   <width>220</width>
-                   <height>190</height>
-                  </size>
-                 </property>
-                 <property name="frameShape">
-                  <enum>QFrame::StyledPanel</enum>
-                 </property>
-                 <property name="ellipsePlot" stdset="0">
-                  <string>x</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="11" column="1">
-              <widget class="QLineEdit" name="l3EmittanceValue">
-               <property name="placeholderText">
-                <string>εₙ  [mm·mrad]</string>
-               </property>
+               <layout class="QGridLayout" name="gridLayout_13">
+                <item row="11" column="2">
+                 <widget class="QLineEdit" name="l3EmittanceValue_2">
+                  <property name="placeholderText">
+                   <string>εₙ  [mm·mrad]</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <widget class="QPushButton" name="l3CalcEmitYPush">
+                  <property name="text">
+                   <string>Calc Emit Y</string>
+                  </property>
+                  <property name="actionRole" stdset="0">
+                   <string>calc</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="12" column="2">
+                 <widget class="QLineEdit" name="l3MatchingValue_2">
+                  <property name="placeholderText">
+                   <string>M</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="13" column="1">
+                 <widget class="QLineEdit" name="l3MatchedEmittanceValue">
+                  <property name="placeholderText">
+                   <string>M·εₙ  [mm·mrad]</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="12" column="1">
+                 <widget class="QLineEdit" name="l3MatchingValue">
+                  <property name="placeholderText">
+                   <string>M</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="13" column="2">
+                 <widget class="QLineEdit" name="l3MatchedEmittanceValue_2">
+                  <property name="placeholderText">
+                   <string>M·εₙ  [mm·mrad]</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QPushButton" name="l3CalcEmitXPush">
+                  <property name="text">
+                   <string>Calc Emit X</string>
+                  </property>
+                  <property name="actionRole" stdset="0">
+                   <string>calc</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="4">
+                 <widget class="QLabel" name="l3EllipseYLabel">
+                  <property name="text">
+                   <string>L3 Y Emittance Ellipse</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                  <property name="plotHeader" stdset="0">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="0" colspan="3">
+                 <widget class="QLabel" name="l3EmittanceHeader">
+                  <property name="text">
+                   <string>L3 Beam Parameters                                X              |            Y</string>
+                  </property>
+                  <property name="sectionHeader" stdset="0">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="13" column="0">
+                 <widget class="QLabel" name="l3MatchedEmittanceLabel">
+                  <property name="text">
+                   <string>Matched emittance  M·ε</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="11" column="4" rowspan="3">
+                 <layout class="QVBoxLayout" name="l3EllipseYLayout">
+                  <item>
+                   <widget class="QFrame" name="l3EmittanceEllipseY">
+                    <property name="minimumSize">
+                     <size>
+                      <width>220</width>
+                      <height>190</height>
+                     </size>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Shape::StyledPanel</enum>
+                    </property>
+                    <property name="ellipsePlot" stdset="0">
+                     <string>y</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="12" column="0">
+                 <widget class="QLabel" name="l3MatchingLabel">
+                  <property name="text">
+                   <string>Matching  M</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="11" column="0">
+                 <widget class="QLabel" name="l3EmittanceLabel">
+                  <property name="text">
+                   <string>Emittance  ε</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="3">
+                 <widget class="QLabel" name="l3EllipseXLabel">
+                  <property name="text">
+                   <string>L3 X Emittance Ellipse</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                  <property name="plotHeader" stdset="0">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="11" column="3" rowspan="3">
+                 <layout class="QVBoxLayout" name="l3EllipseXLayout">
+                  <item>
+                   <widget class="QFrame" name="l3EmittanceEllipseX">
+                    <property name="minimumSize">
+                     <size>
+                      <width>220</width>
+                      <height>190</height>
+                     </size>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Shape::StyledPanel</enum>
+                    </property>
+                    <property name="ellipsePlot" stdset="0">
+                     <string>x</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="11" column="1">
+                 <widget class="QLineEdit" name="l3EmittanceValue">
+                  <property name="placeholderText">
+                   <string>εₙ  [mm·mrad]</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </item>
             </layout>
@@ -2375,232 +2348,912 @@ QPushButton:pressed {
           </item>
          </layout>
         </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="AllWirePlots">
-      <attribute name="title">
-       <string>L2 Ensemble</string>
-      </attribute>
-      <widget class="QLabel" name="overviewTitle">
-       <property name="geometry">
-        <rect>
-         <x>14</x>
-         <y>14</y>
-         <width>951</width>
-         <height>18</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>15</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>L2 Ensemble Wire Scanner Plots</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QFrame" name="frame_4">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>40</y>
-         <width>961</width>
-         <height>861</height>
-        </rect>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <widget class="QFrame" name="overviewCardX1">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>941</width>
-          <height>391</height>
-         </rect>
-        </property>
-        <widget class="QLabel" name="overviewLabelX1">
-         <property name="geometry">
-          <rect>
-           <x>13</x>
-           <y>10</y>
-           <width>891</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>X Plane 1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="plotHeader" stdset="0">
-          <bool>true</bool>
-         </property>
+        <widget class="QWidget" name="AllWirePlots">
+         <attribute name="title">
+          <string>L2 Ensemble</string>
+         </attribute>
+         <widget class="QLabel" name="overviewTitle">
+          <property name="geometry">
+           <rect>
+            <x>14</x>
+            <y>14</y>
+            <width>951</width>
+            <height>18</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>15</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>L2 Ensemble Wire Scanner Plots</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QFrame" name="frame_4">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>40</y>
+            <width>961</width>
+            <height>861</height>
+           </rect>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+          <widget class="QFrame" name="overviewCardX1">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>941</width>
+             <height>391</height>
+            </rect>
+           </property>
+           <widget class="QLabel" name="overviewLabelX1">
+            <property name="geometry">
+             <rect>
+              <x>13</x>
+              <y>10</y>
+              <width>891</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>X Plane 1</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+            <property name="plotHeader" stdset="0">
+             <bool>true</bool>
+            </property>
+           </widget>
+           <widget class="QFrame" name="overviewPlotX1">
+            <property name="geometry">
+             <rect>
+              <x>13</x>
+              <y>37</y>
+              <width>921</width>
+              <height>341</height>
+             </rect>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>240</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+           </widget>
+          </widget>
+          <widget class="QFrame" name="overviewCardY1">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>414</y>
+             <width>941</width>
+             <height>441</height>
+            </rect>
+           </property>
+           <widget class="QLabel" name="overviewLabelY1">
+            <property name="geometry">
+             <rect>
+              <x>13</x>
+              <y>13</y>
+              <width>891</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Y Plane 1</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+            <property name="plotHeader" stdset="0">
+             <bool>true</bool>
+            </property>
+           </widget>
+           <widget class="QFrame" name="overviewPlotY1">
+            <property name="geometry">
+             <rect>
+              <x>13</x>
+              <y>37</y>
+              <width>921</width>
+              <height>391</height>
+             </rect>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>240</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+           </widget>
+          </widget>
+         </widget>
         </widget>
-        <widget class="QFrame" name="overviewPlotX1">
-         <property name="geometry">
-          <rect>
-           <x>13</x>
-           <y>37</y>
-           <width>921</width>
-           <height>341</height>
-          </rect>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>150</width>
-           <height>240</height>
-          </size>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
+        <widget class="QWidget" name="L3EnsemblePlots">
+         <attribute name="title">
+          <string>L3 Ensemble</string>
+         </attribute>
+         <widget class="QLabel" name="l3EnsembleTitle">
+          <property name="geometry">
+           <rect>
+            <x>14</x>
+            <y>14</y>
+            <width>951</width>
+            <height>18</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>15</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>L3 Ensemble Wire Scanner Plots</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QFrame" name="frame_5">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>40</y>
+            <width>961</width>
+            <height>861</height>
+           </rect>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+          <widget class="QFrame" name="overviewCardX1_2">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>941</width>
+             <height>391</height>
+            </rect>
+           </property>
+           <widget class="QLabel" name="overviewLabelX1_2">
+            <property name="geometry">
+             <rect>
+              <x>13</x>
+              <y>10</y>
+              <width>891</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>X Plane 1</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+            <property name="plotHeader" stdset="0">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </widget>
+          <widget class="QFrame" name="overviewCardY1_2">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>414</y>
+             <width>941</width>
+             <height>441</height>
+            </rect>
+           </property>
+          </widget>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="tab">
+         <attribute name="title">
+          <string>Quad scan</string>
+         </attribute>
+         <widget class="QFrame" name="Plotframe_2">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>1053</width>
+            <height>311</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QFrame {
+    border: none;
+    border-radius: 8px;
+}</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+          <layout class="QVBoxLayout" name="singleWirePlotLayout_2">
+           <property name="spacing">
+            <number>9</number>
+           </property>
+           <property name="leftMargin">
+            <number>9</number>
+           </property>
+           <property name="topMargin">
+            <number>9</number>
+           </property>
+           <property name="rightMargin">
+            <number>9</number>
+           </property>
+           <property name="bottomMargin">
+            <number>9</number>
+           </property>
+           <item>
+            <widget class="QFrame" name="frame_34">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>44</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QFrame {
+    border: none;
+    border-radius: 8px;
+}</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <item>
+               <widget class="QLabel" name="Xaxis_Label_2">
+                <property name="font">
+                 <font>
+                  <pointsize>15</pointsize>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>X-Axis </string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="Yaxis_Label_2">
+                <property name="font">
+                 <font>
+                  <pointsize>15</pointsize>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Y-Axis </string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="singleWirePlotRow_2">
+             <property name="spacing">
+              <number>9</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QFrame" name="SingleWirePlot_X_2">
+               <property name="styleSheet">
+                <string notr="true">QFrame {
+    border: none;
+    border-radius: 8px;
+}</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QFrame" name="frame_8">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>239</y>
+            <width>1035</width>
+            <height>521</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>220</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_10">
+           <item row="2" column="0">
+            <widget class="QFrame" name="MotorFrame_2">
+             <property name="styleSheet">
+              <string notr="true">QFrame {
+    border: none;
+    border-radius: 8px;
+}</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_15">
+              <item row="1" column="1">
+               <widget class="QLineEdit" name="InnerposX_2"/>
+              </item>
+              <item row="1" column="2">
+               <widget class="QLineEdit" name="OutterposX_2"/>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="X_label_2">
+                <property name="text">
+                 <string>X</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLineEdit" name="InnerposY_2"/>
+              </item>
+              <item row="2" column="2">
+               <widget class="QLineEdit" name="OutterposY_2"/>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="Y_label_2">
+                <property name="text">
+                 <string>Y</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QLabel" name="Outter_Label_2">
+                <property name="styleSheet">
+                 <string notr="true">QFrame#frame_7 {
+    min-width: 400px;
+    min-height: 300px;
+
+    border: none;
+}</string>
+                </property>
+                <property name="text">
+                 <string>Outter Motor Pos.</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLabel" name="Inner_Label_2">
+                <property name="text">
+                 <string>Inner Motor Pos. </string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="0" column="2" rowspan="3">
+            <widget class="QFrame" name="ButtonsFrame_2">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <widget class="QPushButton" name="ElogPush_2">
+              <property name="geometry">
+               <rect>
+                <x>12</x>
+                <y>2</y>
+                <width>91</width>
+                <height>141</height>
+               </rect>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>91</width>
+                <height>36</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <fontweight>DemiBold</fontweight>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton#l2XElogPush,
+QPushButton#l2XAbortPush {
+    min-width: 250px;
+    max-width: 280px;
+    min-height: 500px;
+    max-height: 600px;
+}
+</string>
+              </property>
+              <property name="text">
+               <string>ELOG -&gt;</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="AbortPush_2">
+              <property name="geometry">
+               <rect>
+                <x>12</x>
+                <y>152</y>
+                <width>91</width>
+                <height>121</height>
+               </rect>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>91</width>
+                <height>36</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>91</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <fontweight>DemiBold</fontweight>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QFrame {
+    border: none;
+    border-radius: 8px;
+minimumSize height = 100
+maximumSize height = 100
+}</string>
+              </property>
+              <property name="text">
+               <string>Abort</string>
+              </property>
+             </widget>
+            </widget>
+           </item>
+           <item row="0" column="1" rowspan="2">
+            <widget class="QFrame" name="ScanFrame_2">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_14">
+              <item row="2" column="0">
+               <widget class="QPushButton" name="ScanYpush_2">
+                <property name="font">
+                 <font>
+                  <fontweight>DemiBold</fontweight>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>SCAN Y</string>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>16</width>
+                  <height>25</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QPushButton" name="ParkXpush_2">
+                <property name="font">
+                 <font>
+                  <fontweight>DemiBold</fontweight>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>PARK X</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QPushButton" name="ScanXpush_2">
+                <property name="font">
+                 <font>
+                  <fontweight>DemiBold</fontweight>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>SCAN X</string>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>16</width>
+                  <height>25</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QPushButton" name="ParkPush_2">
+                <property name="font">
+                 <font>
+                  <fontweight>DemiBold</fontweight>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>PARK </string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QPushButton" name="ParkYpush_2">
+                <property name="font">
+                 <font>
+                  <fontweight>DemiBold</fontweight>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>PARK Y</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QPushButton" name="pushButton_3">
+                <property name="text">
+                 <string>ABORT</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QPushButton" name="pushButton_5">
+                <property name="text">
+                 <string>CLEAR X</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QPushButton" name="pushButton_6">
+                <property name="text">
+                 <string>CLEAR Y</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QPushButton" name="ScanXYpush_2">
+                <property name="font">
+                 <font>
+                  <fontweight>DemiBold</fontweight>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>SCAN X&amp;Y</string>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>16</width>
+                  <height>25</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QFrame" name="frame_9">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_11">
+              <item row="1" column="0">
+               <widget class="QLabel" name="X_label_size_2">
+                <property name="text">
+                 <string>X Axis: </string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="Y_label_size_2">
+                <property name="text">
+                 <string>Y Axis </string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QLabel" name="xunit_2">
+                <property name="text">
+                 <string>um</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLineEdit" name="X_Size_2"/>
+              </item>
+              <item row="2" column="2">
+               <widget class="QLabel" name="yunit_2">
+                <property name="text">
+                 <string>um</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLineEdit" name="Y_Size_2"/>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="0" column="0" rowspan="2">
+            <widget class="QFrame" name="WireSelectFrame_2">
+             <property name="styleSheet">
+              <string notr="true">QFrame {
+    border: none;
+    border-radius: 8px;
+}</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <widget class="QLabel" name="label_5">
+              <property name="geometry">
+               <rect>
+                <x>12</x>
+                <y>239</y>
+                <width>106</width>
+                <height>16</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>Select your Wire: </string>
+              </property>
+             </widget>
+             <widget class="QProgressBar" name="progressBar_6">
+              <property name="geometry">
+               <rect>
+                <x>12</x>
+                <y>212</y>
+                <width>461</width>
+                <height>20</height>
+               </rect>
+              </property>
+              <property name="value">
+               <number>24</number>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_6">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>190</y>
+                <width>111</width>
+                <height>16</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>SCAN PROGRESS:</string>
+              </property>
+             </widget>
+             <widget class="QComboBox" name="WireDropdown_2">
+              <property name="geometry">
+               <rect>
+                <x>12</x>
+                <y>279</y>
+                <width>136</width>
+                <height>30</height>
+               </rect>
+              </property>
+              <item>
+               <property name="text">
+                <string>WIRE:LI20:3179</string>
+               </property>
+              </item>
+             </widget>
+             <widget class="QLabel" name="label">
+              <property name="geometry">
+               <rect>
+                <x>12</x>
+                <y>12</y>
+                <width>101</width>
+                <height>16</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>Select your quad</string>
+              </property>
+             </widget>
+             <widget class="QComboBox" name="QuadPVDropdown">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>40</y>
+                <width>175</width>
+                <height>30</height>
+               </rect>
+              </property>
+              <item>
+               <property name="text">
+                <string>LI20:LGPS:1910:BDES</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>LI20:LGPS:3204:BDES
+</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>LI20:LGPS:3031:BDES</string>
+               </property>
+              </item>
+             </widget>
+             <widget class="QLineEdit" name="QuadKMaxBox">
+              <property name="geometry">
+               <rect>
+                <x>170</x>
+                <y>110</y>
+                <width>139</width>
+                <height>30</height>
+               </rect>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="QuadKMinBox">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>110</y>
+                <width>139</width>
+                <height>30</height>
+               </rect>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_7">
+              <property name="geometry">
+               <rect>
+                <x>50</x>
+                <y>90</y>
+                <width>101</width>
+                <height>16</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>k min [kG]</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_8">
+              <property name="geometry">
+               <rect>
+                <x>190</x>
+                <y>80</y>
+                <width>101</width>
+                <height>16</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>k max [kG]</string>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="QuadStepsBox">
+              <property name="geometry">
+               <rect>
+                <x>330</x>
+                <y>110</y>
+                <width>139</width>
+                <height>30</height>
+               </rect>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_9">
+              <property name="geometry">
+               <rect>
+                <x>340</x>
+                <y>80</y>
+                <width>101</width>
+                <height>16</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string># steps</string>
+              </property>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </widget>
        </widget>
-       <widget class="QFrame" name="overviewCardY1">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>414</y>
-          <width>941</width>
-          <height>441</height>
-         </rect>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="font">
+         <font>
+          <pointsize>20</pointsize>
+          <bold>true</bold>
+         </font>
         </property>
-        <widget class="QLabel" name="overviewLabelY1">
-         <property name="geometry">
-          <rect>
-           <x>13</x>
-           <y>13</y>
-           <width>891</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Y Plane 1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="plotHeader" stdset="0">
-          <bool>true</bool>
-         </property>
-        </widget>
-        <widget class="QFrame" name="overviewPlotY1">
-         <property name="geometry">
-          <rect>
-           <x>13</x>
-           <y>37</y>
-           <width>921</width>
-           <height>391</height>
-          </rect>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>150</width>
-           <height>240</height>
-          </size>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-        </widget>
-       </widget>
-      </widget>
-     </widget>
-     <widget class="QWidget" name="L3EnsemblePlots">
-      <attribute name="title">
-       <string>L3 Ensemble</string>
-      </attribute>
-      <widget class="QLabel" name="l3EnsembleTitle">
-       <property name="geometry">
-        <rect>
-         <x>14</x>
-         <y>14</y>
-         <width>951</width>
-         <height>18</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>15</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>L3 Ensemble Wire Scanner Plots</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QFrame" name="frame_5">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>40</y>
-         <width>961</width>
-         <height>861</height>
-        </rect>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <widget class="QFrame" name="overviewCardX1_2">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>941</width>
-          <height>391</height>
-         </rect>
+        <property name="text">
+         <string>FACET-II Wire Scanner </string>
         </property>
-        <widget class="QLabel" name="overviewLabelX1_2">
-         <property name="geometry">
-          <rect>
-           <x>13</x>
-           <y>10</y>
-           <width>891</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>X Plane 1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="plotHeader" stdset="0">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QFrame" name="overviewCardY1_2">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>414</y>
-          <width>941</width>
-          <height>441</height>
-         </rect>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
        </widget>
-      </widget>
-     </widget>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>

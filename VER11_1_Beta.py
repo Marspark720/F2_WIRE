@@ -13,6 +13,7 @@ from time import sleep, monotonic
 # imports for the QT Shit
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QVBoxLayout
+from PyQt5.QtGui import QDoubleValidator, QIntValidator
 
 # Math/Numerical Shit
 import numpy as np
@@ -60,6 +61,17 @@ class MyGui(QtWidgets.QWidget):
         self.tabWidget.removeTab(self.tabWidget.indexOf(self.EmittanceMatching))
         self.tabWidget.removeTab(self.tabWidget.indexOf(self.AllWirePlots))
         self.tabWidget.removeTab(self.tabWidget.indexOf(self.L3EnsemblePlots))
+
+        # Quad scan tab: only allow numbers in the boxes
+        self.QuadKMinBox.setValidator(QDoubleValidator(-1000.0, 1000.0, 4))
+        self.QuadKMaxBox.setValidator(QDoubleValidator(-1000.0, 1000.0, 4))
+        self.QuadStepsBox.setValidator(QIntValidator(1, 1000))
+
+        # Quad scan tab: build the k array whenever a value is entered
+        self.quad_k_array = None
+        self.QuadKMinBox.editingFinished.connect(self.update_quad_k_array)
+        self.QuadKMaxBox.editingFinished.connect(self.update_quad_k_array)
+        self.QuadStepsBox.editingFinished.connect(self.update_quad_k_array)
 
         self.abort_requested = False
         self.axis = None
@@ -610,6 +622,21 @@ class MyGui(QtWidgets.QWidget):
             self.singlesscan(axis="Y", progressBar=self.progressBar_1)
 
     # This selects thet current active wire.
+    def update_quad_k_array(self):
+        """Make the quad scan array from k min to k max in n steps."""
+        try:
+            k_min = float(self.QuadKMinBox.text())
+            k_max = float(self.QuadKMaxBox.text())
+            n_steps = int(self.QuadStepsBox.text())
+        except ValueError:
+            return  # a box is empty or not a number yet
+
+        if n_steps < 1:
+            return
+
+        self.quad_k_array = np.linspace(k_min, k_max, n_steps)
+        print("Quad k array:", self.quad_k_array)
+
     def wire_selection_changed(self, selected_wire):
         self.current_wire = selected_wire
         print(f"Selected wire: {selected_wire}")
