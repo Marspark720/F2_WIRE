@@ -2967,21 +2967,21 @@ maximumSize height = 100
                </widget>
               </item>
               <item row="0" column="2">
-               <widget class="QPushButton" name="pushButton_3">
+               <widget class="QPushButton" name="QuadpushButton">
                 <property name="text">
                  <string>ABORT</string>
                 </property>
                </widget>
               </item>
               <item row="1" column="2">
-               <widget class="QPushButton" name="pushButton_5">
+               <widget class="QPushButton" name="QuadpushButton_2">
                 <property name="text">
                  <string>CLEAR X</string>
                 </property>
                </widget>
               </item>
               <item row="2" column="2">
-               <widget class="QPushButton" name="pushButton_6">
+               <widget class="QPushButton" name="QuadpushButton_3">
                 <property name="text">
                  <string>CLEAR Y</string>
                 </property>
