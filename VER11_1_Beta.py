@@ -88,6 +88,7 @@ class MyGui(QtWidgets.QWidget):
             self.progressBar_3,
             self.progressBar_4,
             self.progressBar_5,
+            self.progressBar_6, # quad scan tab
         ]:
             progress_bar.setValue(0)
 
@@ -141,6 +142,15 @@ class MyGui(QtWidgets.QWidget):
 
         self.Xaxis_Label.hide()
         self.Yaxis_Label.hide()
+
+        ################################################################################################################
+        # Quad Scan Wire scan Tab
+        ################################################################################################################
+        # Scan Buttons:
+        self.QuadScanXYpush.clicked.connect(lambda: self.quad_scan_all(axis="XY"))
+        self.QuadScanXpush.clicked.connect( lambda: self.quad_scan_all(axis= "X"))
+        self.QuadScanYpush.clicked.connect( lambda: self.quad_scan_all(axis= "Y"))
+
 
         ################################################################################################################
         # Single Wire scan Tab
@@ -379,6 +389,74 @@ class MyGui(QtWidgets.QWidget):
         figure.tight_layout()
         self.SingleWirePlot_canvas.draw_idle()
 
+    def quad_singlesscan(self, axis=None, progressBar=None):
+
+        ####################       
+        # init wire object #
+        ####################
+ 
+        self.abort_requested = False
+        axis = "X" if axis is None else axis.upper()
+
+        self.axis = axis
+        self.area = "IP"
+        self.sec = "LI20"
+        self.loc = "3179"
+        self.wirePV = f"WIRE:{self.sec}:{self.loc}"
+
+        wire = wireFunk(wirePV=self.wirePV, area=self.area, axis=axis)
+
+        #####################
+        # init progress bar #
+        #####################
+
+        if progressBar is not None:
+            progressBar.setValue(0)
+
+        def update_scan_progress(value):
+            if progressBar is not None:
+                progressBar.setValue(value)
+                QtWidgets.QApplication.processEvents()
+            return self.abort_requested
+
+        ####################
+        # do the wire scan #
+        ####################
+
+        x, PMTdata = wire.scanfunk(progress_callback=update_scan_progress)
+
+        ################
+        # process data #
+        ################
+
+        smooth_signal = savgol_filter(PMTdata, 11, 3, )
+        finder = PF_FINDER(x, smooth_signal, self.wirePV)
+        finder.find_peaks_and_widths()
+
+        try:
+            result = finder.calculate_beam_rms(raw_y=PMTdata, smoothed_y=smooth_signal, )
+            error_result = finder.calculate_single_scan_error(raw_y=PMTdata, smoothed_y=smooth_signal, n_bootstrap=3, )
+        except RuntimeError:
+            print("WARNING: Gaussian fit failed; using raw beam values")
+
+            result = finder.calculate_beam_rms(raw_y=PMTdata, smoothed_y=smooth_signal, fit_asym_gauss=False, )
+
+            result["fitted_rms"] = result["raw_rms"]
+            result["fitted_centroid"] = result["beam_centroid"]
+            result["fitted_skew"] = result["beam_skew"]
+            result["fitted_kurtosis"] = result["beam_kurtosis"]
+
+            error_result = {"raw_rms_error": 0.0, "fitted_rms_error": 0.0, }
+
+        self.single_scan_results[axis] = {"finder": finder, "result": result, "error_result": error_result, }
+
+        ###############
+        # plot on gui #
+        ###############
+
+        self.update_single_subplots()
+        self.SingleWirePlot_canvas.draw_idle()
+
     def singlesscan(self, sec=None, loc=None, axis=None, progressBar=None):
         self.abort_requested = False
         axis = "X" if axis is None else axis.upper()
@@ -591,6 +669,50 @@ class MyGui(QtWidgets.QWidget):
                 ep.caput("WIRE:LI20:3179:XRMS", result["raw_rms"])
             elif self.axis == "Y":
                 ep.caput("WIRE:LI20:3179:YRMS", result["raw_rms"])
+
+
+    def quad_scan_all(self, axis="XY"):
+        """
+        only works for area=IP and axis="XY"
+        """
+        if self.quad_k_array is None:
+            raise ValueError(f"self.quad_k_array is none: {self.quad_k_array}. Set quad scan points first!")
+        else:
+            
+            ######################
+            # loop over k values #
+            ######################
+
+            for ki in self.quad_k_array:
+
+                #####################
+                # set quad strength #
+                #####################
+
+                quad_pv_root = self.QuadPVDropdown.currentText()
+                quad_pv_set_str = f"{quad_pv_root}:BDES"
+                quad_pv_get_str = f"{quad_pv_root}:BACT"
+                quad_pv_set = get_pv(quad_pv_set_str)
+                quad_pv_get = get_pv(quad_pv_get_str)
+                quad_pv_set.put(float(ki), wait=True) # quad strength in [kG] 
+                ki_readback = quad_pv_get.get()
+                print(f"[quad_scan_all] Current quad value: {ki_readback} [kG]")
+
+                #####################
+                # perform wire scan #
+                #####################
+
+                if axis=="XY":
+                    self.quad_singlesscan(axis="X", progressBar=self.progressBar_6)
+                    self.quad_singlesscan(axis="Y", progressBar=self.progressBar_6)
+                elif axis=="X":
+                    self.quad_singlesscan(axis="X", progressBar=self.progressBar_6)
+                elif axis=="Y":
+                    self.quad_singlesscan(axis="Y", progressBar=self.progressBar_6)
+                else:
+                    raise ValueError(f"Invalid value for axis: {axis}. Has to be X, Y or XY!")
+
+                print("[quad_scan_all] wire scan complete")
 
     def scan_all(self, area="L2", axis="X"):
         if area == "L2" and axis == "X":
