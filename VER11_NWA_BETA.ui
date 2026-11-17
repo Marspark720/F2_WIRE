@@ -524,10 +524,10 @@ QLabel[sectionHeader=&quot;true&quot;] {
       </size>
      </property>
      <property name="frameShape">
-      <enum>QFrame::Shape::StyledPanel</enum>
+      <enum>QFrame::StyledPanel</enum>
      </property>
      <property name="frameShadow">
-      <enum>QFrame::Shadow::Raised</enum>
+      <enum>QFrame::Raised</enum>
      </property>
      <layout class="QVBoxLayout" name="headerLayout">
       <property name="spacing">
@@ -585,10 +585,10 @@ QLabel[sectionHeader=&quot;true&quot;] {
 }</string>
             </property>
             <property name="frameShape">
-             <enum>QFrame::Shape::StyledPanel</enum>
+             <enum>QFrame::StyledPanel</enum>
             </property>
             <property name="frameShadow">
-             <enum>QFrame::Shadow::Raised</enum>
+             <enum>QFrame::Raised</enum>
             </property>
             <layout class="QVBoxLayout" name="singleWirePlotLayout">
              <property name="spacing">
@@ -627,10 +627,10 @@ QLabel[sectionHeader=&quot;true&quot;] {
 }</string>
                </property>
                <property name="frameShape">
-                <enum>QFrame::Shape::StyledPanel</enum>
+                <enum>QFrame::StyledPanel</enum>
                </property>
                <property name="frameShadow">
-                <enum>QFrame::Shadow::Raised</enum>
+                <enum>QFrame::Raised</enum>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout">
                 <item>
@@ -645,7 +645,7 @@ QLabel[sectionHeader=&quot;true&quot;] {
                    <string>X-Axis </string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                   <set>Qt::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -661,7 +661,7 @@ QLabel[sectionHeader=&quot;true&quot;] {
                    <string>Y-Axis </string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                   <set>Qt::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -694,10 +694,10 @@ QLabel[sectionHeader=&quot;true&quot;] {
 }</string>
                  </property>
                  <property name="frameShape">
-                  <enum>QFrame::Shape::StyledPanel</enum>
+                  <enum>QFrame::StyledPanel</enum>
                  </property>
                  <property name="frameShadow">
-                  <enum>QFrame::Shadow::Raised</enum>
+                  <enum>QFrame::Raised</enum>
                  </property>
                 </widget>
                </item>
@@ -721,19 +721,19 @@ QLabel[sectionHeader=&quot;true&quot;] {
              </size>
             </property>
             <property name="frameShape">
-             <enum>QFrame::Shape::StyledPanel</enum>
+             <enum>QFrame::StyledPanel</enum>
             </property>
             <property name="frameShadow">
-             <enum>QFrame::Shadow::Raised</enum>
+             <enum>QFrame::Raised</enum>
             </property>
             <layout class="QGridLayout" name="gridLayout_5">
              <item row="0" column="2" rowspan="3">
               <widget class="QFrame" name="ButtonsFrame">
                <property name="frameShape">
-                <enum>QFrame::Shape::StyledPanel</enum>
+                <enum>QFrame::StyledPanel</enum>
                </property>
                <property name="frameShadow">
-                <enum>QFrame::Shadow::Raised</enum>
+                <enum>QFrame::Raised</enum>
                </property>
                <widget class="QPushButton" name="ElogPush">
                 <property name="geometry">
@@ -812,10 +812,10 @@ maximumSize height = 100
              <item row="2" column="1">
               <widget class="QFrame" name="frame">
                <property name="frameShape">
-                <enum>QFrame::Shape::StyledPanel</enum>
+                <enum>QFrame::StyledPanel</enum>
                </property>
                <property name="frameShadow">
-                <enum>QFrame::Shadow::Raised</enum>
+                <enum>QFrame::Raised</enum>
                </property>
                <layout class="QGridLayout" name="gridLayout_4">
                 <item row="1" column="0">
@@ -858,10 +858,10 @@ maximumSize height = 100
              <item row="0" column="1" rowspan="2">
               <widget class="QFrame" name="ScanFrame">
                <property name="frameShape">
-                <enum>QFrame::Shape::StyledPanel</enum>
+                <enum>QFrame::StyledPanel</enum>
                </property>
                <property name="frameShadow">
-                <enum>QFrame::Shadow::Raised</enum>
+                <enum>QFrame::Raised</enum>
                </property>
                <layout class="QGridLayout" name="gridLayout_2">
                 <item row="2" column="0">
@@ -987,10 +987,10 @@ maximumSize height = 100
 }</string>
                </property>
                <property name="frameShape">
-                <enum>QFrame::Shape::StyledPanel</enum>
+                <enum>QFrame::StyledPanel</enum>
                </property>
                <property name="frameShadow">
-                <enum>QFrame::Shadow::Raised</enum>
+                <enum>QFrame::Raised</enum>
                </property>
                <layout class="QGridLayout" name="gridLayout_3">
                 <item row="1" column="1">
@@ -1033,7 +1033,7 @@ maximumSize height = 100
                    <string>Outter Motor Pos.</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                   <set>Qt::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -1043,7 +1043,7 @@ maximumSize height = 100
                    <string>Inner Motor Pos. </string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                   <set>Qt::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -1059,10 +1059,10 @@ maximumSize height = 100
 }</string>
                </property>
                <property name="frameShape">
-                <enum>QFrame::Shape::StyledPanel</enum>
+                <enum>QFrame::StyledPanel</enum>
                </property>
                <property name="frameShadow">
-                <enum>QFrame::Shadow::Raised</enum>
+                <enum>QFrame::Raised</enum>
                </property>
                <layout class="QGridLayout" name="gridLayout">
                 <item row="4" column="0" rowspan="2">
@@ -1132,19 +1132,19 @@ maximumSize height = 100
 }</string>
             </property>
             <property name="frameShape">
-             <enum>QFrame::Shape::StyledPanel</enum>
+             <enum>QFrame::StyledPanel</enum>
             </property>
             <property name="frameShadow">
-             <enum>QFrame::Shadow::Raised</enum>
+             <enum>QFrame::Raised</enum>
             </property>
             <layout class="QGridLayout" name="gridLayout_6">
              <item row="0" column="0">
               <widget class="QFrame" name="frame_7">
                <property name="frameShape">
-                <enum>QFrame::Shape::StyledPanel</enum>
+                <enum>QFrame::StyledPanel</enum>
                </property>
                <property name="frameShadow">
-                <enum>QFrame::Shadow::Raised</enum>
+                <enum>QFrame::Raised</enum>
                </property>
               </widget>
              </item>
@@ -1166,10 +1166,10 @@ maximumSize height = 100
              </size>
             </property>
             <property name="frameShape">
-             <enum>QFrame::Shape::StyledPanel</enum>
+             <enum>QFrame::StyledPanel</enum>
             </property>
             <property name="frameShadow">
-             <enum>QFrame::Shadow::Raised</enum>
+             <enum>QFrame::Raised</enum>
             </property>
             <layout class="QHBoxLayout" name="multiL2XControlsLayout">
              <property name="spacing">
@@ -1190,10 +1190,10 @@ maximumSize height = 100
              <item>
               <widget class="QFrame" name="frame_12">
                <property name="frameShape">
-                <enum>QFrame::Shape::StyledPanel</enum>
+                <enum>QFrame::StyledPanel</enum>
                </property>
                <property name="frameShadow">
-                <enum>QFrame::Shadow::Raised</enum>
+                <enum>QFrame::Raised</enum>
                </property>
                <layout class="QGridLayout" name="gridLayout_7">
                 <item row="2" column="0">
@@ -1305,10 +1305,10 @@ QPushButton:pressed {
                 </size>
                </property>
                <property name="frameShape">
-                <enum>QFrame::Shape::StyledPanel</enum>
+                <enum>QFrame::StyledPanel</enum>
                </property>
                <property name="frameShadow">
-                <enum>QFrame::Shadow::Raised</enum>
+                <enum>QFrame::Raised</enum>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_8">
                 <item>
@@ -1397,19 +1397,19 @@ QPushButton:pressed {
           <item>
            <widget class="QFrame" name="MultiwireX_2">
             <property name="frameShape">
-             <enum>QFrame::Shape::StyledPanel</enum>
+             <enum>QFrame::StyledPanel</enum>
             </property>
             <property name="frameShadow">
-             <enum>QFrame::Shadow::Raised</enum>
+             <enum>QFrame::Raised</enum>
             </property>
             <layout class="QGridLayout" name="gridLayout_8">
              <item row="0" column="0">
               <widget class="QFrame" name="frame_13">
                <property name="frameShape">
-                <enum>QFrame::Shape::StyledPanel</enum>
+                <enum>QFrame::StyledPanel</enum>
                </property>
                <property name="frameShadow">
-                <enum>QFrame::Shadow::Raised</enum>
+                <enum>QFrame::Raised</enum>
                </property>
               </widget>
              </item>
@@ -1431,10 +1431,10 @@ QPushButton:pressed {
              </size>
             </property>
             <property name="frameShape">
-             <enum>QFrame::Shape::StyledPanel</enum>
+             <enum>QFrame::StyledPanel</enum>
             </property>
             <property name="frameShadow">
-             <enum>QFrame::Shadow::Raised</enum>
+             <enum>QFrame::Raised</enum>
             </property>
             <layout class="QHBoxLayout" name="multiL2YControlsLayout">
              <property name="spacing">
@@ -1455,10 +1455,10 @@ QPushButton:pressed {
              <item>
               <widget class="QFrame" name="frame_18">
                <property name="frameShape">
-                <enum>QFrame::Shape::StyledPanel</enum>
+                <enum>QFrame::StyledPanel</enum>
                </property>
                <property name="frameShadow">
-                <enum>QFrame::Shadow::Raised</enum>
+                <enum>QFrame::Raised</enum>
                </property>
                <layout class="QGridLayout" name="gridLayout_9">
                 <item row="2" column="0">
@@ -1514,10 +1514,10 @@ QPushButton:pressed {
                 </size>
                </property>
                <property name="frameShape">
-                <enum>QFrame::Shape::StyledPanel</enum>
+                <enum>QFrame::StyledPanel</enum>
                </property>
                <property name="frameShadow">
-                <enum>QFrame::Shadow::Raised</enum>
+                <enum>QFrame::Raised</enum>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_7">
                 <item>
@@ -1572,19 +1572,19 @@ QPushButton:pressed {
           <item>
            <widget class="QFrame" name="MultiwireL3X">
             <property name="frameShape">
-             <enum>QFrame::Shape::StyledPanel</enum>
+             <enum>QFrame::StyledPanel</enum>
             </property>
             <property name="frameShadow">
-             <enum>QFrame::Shadow::Raised</enum>
+             <enum>QFrame::Raised</enum>
             </property>
             <layout class="QGridLayout" name="multiL3XPlotLayout">
              <item row="0" column="0">
               <widget class="QFrame" name="l3XPlot1">
                <property name="frameShape">
-                <enum>QFrame::Shape::StyledPanel</enum>
+                <enum>QFrame::StyledPanel</enum>
                </property>
                <property name="frameShadow">
-                <enum>QFrame::Shadow::Raised</enum>
+                <enum>QFrame::Raised</enum>
                </property>
               </widget>
              </item>
@@ -1606,10 +1606,10 @@ QPushButton:pressed {
              </size>
             </property>
             <property name="frameShape">
-             <enum>QFrame::Shape::StyledPanel</enum>
+             <enum>QFrame::StyledPanel</enum>
             </property>
             <property name="frameShadow">
-             <enum>QFrame::Shadow::Raised</enum>
+             <enum>QFrame::Raised</enum>
             </property>
             <layout class="QHBoxLayout" name="multiL3XControlsLayout">
              <property name="spacing">
@@ -1630,10 +1630,10 @@ QPushButton:pressed {
              <item>
               <widget class="QFrame" name="l3XScanFrame">
                <property name="frameShape">
-                <enum>QFrame::Shape::StyledPanel</enum>
+                <enum>QFrame::StyledPanel</enum>
                </property>
                <property name="frameShadow">
-                <enum>QFrame::Shadow::Raised</enum>
+                <enum>QFrame::Raised</enum>
                </property>
                <layout class="QGridLayout" name="l3XScanButtonsLayout">
                 <item row="1" column="1">
@@ -1701,10 +1701,10 @@ QPushButton:pressed {
                 </size>
                </property>
                <property name="frameShape">
-                <enum>QFrame::Shape::StyledPanel</enum>
+                <enum>QFrame::StyledPanel</enum>
                </property>
                <property name="frameShadow">
-                <enum>QFrame::Shadow::Raised</enum>
+                <enum>QFrame::Raised</enum>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_6">
                 <item>
@@ -1768,19 +1768,19 @@ QPushButton:pressed {
           <item>
            <widget class="QFrame" name="MultiwireL3Y">
             <property name="frameShape">
-             <enum>QFrame::Shape::StyledPanel</enum>
+             <enum>QFrame::StyledPanel</enum>
             </property>
             <property name="frameShadow">
-             <enum>QFrame::Shadow::Raised</enum>
+             <enum>QFrame::Raised</enum>
             </property>
             <layout class="QGridLayout" name="multiL3YPlotLayout">
              <item row="0" column="0">
               <widget class="QFrame" name="l3YPlot1">
                <property name="frameShape">
-                <enum>QFrame::Shape::StyledPanel</enum>
+                <enum>QFrame::StyledPanel</enum>
                </property>
                <property name="frameShadow">
-                <enum>QFrame::Shadow::Raised</enum>
+                <enum>QFrame::Raised</enum>
                </property>
               </widget>
              </item>
@@ -1802,10 +1802,10 @@ QPushButton:pressed {
              </size>
             </property>
             <property name="frameShape">
-             <enum>QFrame::Shape::StyledPanel</enum>
+             <enum>QFrame::StyledPanel</enum>
             </property>
             <property name="frameShadow">
-             <enum>QFrame::Shadow::Raised</enum>
+             <enum>QFrame::Raised</enum>
             </property>
             <layout class="QHBoxLayout" name="multiL3YControlsLayout">
              <property name="spacing">
@@ -1826,10 +1826,10 @@ QPushButton:pressed {
              <item>
               <widget class="QFrame" name="l3YScanFrame">
                <property name="frameShape">
-                <enum>QFrame::Shape::StyledPanel</enum>
+                <enum>QFrame::StyledPanel</enum>
                </property>
                <property name="frameShadow">
-                <enum>QFrame::Shadow::Raised</enum>
+                <enum>QFrame::Raised</enum>
                </property>
                <layout class="QGridLayout" name="l3YScanButtonsLayout">
                 <item row="1" column="0">
@@ -1897,10 +1897,10 @@ QPushButton:pressed {
                 </size>
                </property>
                <property name="frameShape">
-                <enum>QFrame::Shape::StyledPanel</enum>
+                <enum>QFrame::StyledPanel</enum>
                </property>
                <property name="frameShadow">
-                <enum>QFrame::Shadow::Raised</enum>
+                <enum>QFrame::Raised</enum>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_5">
                 <item>
@@ -1979,7 +1979,7 @@ QPushButton:pressed {
              <string>Transverse Emittance &amp; Matching</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <set>Qt::AlignCenter</set>
             </property>
             <property name="sectionHeader" stdset="0">
              <bool>true</bool>
@@ -1989,10 +1989,10 @@ QPushButton:pressed {
           <item>
            <widget class="QFrame" name="frame_32">
             <property name="frameShape">
-             <enum>QFrame::Shape::StyledPanel</enum>
+             <enum>QFrame::StyledPanel</enum>
             </property>
             <property name="frameShadow">
-             <enum>QFrame::Shadow::Raised</enum>
+             <enum>QFrame::Raised</enum>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
              <item>
@@ -2032,7 +2032,7 @@ QPushButton:pressed {
                      </size>
                     </property>
                     <property name="frameShape">
-                     <enum>QFrame::Shape::StyledPanel</enum>
+                     <enum>QFrame::StyledPanel</enum>
                     </property>
                     <property name="ellipsePlot" stdset="0">
                      <string>x</string>
@@ -2059,7 +2059,7 @@ QPushButton:pressed {
                      </size>
                     </property>
                     <property name="frameShape">
-                     <enum>QFrame::Shape::StyledPanel</enum>
+                     <enum>QFrame::StyledPanel</enum>
                     </property>
                     <property name="ellipsePlot" stdset="0">
                      <string>y</string>
@@ -2146,7 +2146,7 @@ QPushButton:pressed {
                    <string>L2 X Emittance Ellipse</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                   <set>Qt::AlignCenter</set>
                   </property>
                   <property name="plotHeader" stdset="0">
                    <bool>true</bool>
@@ -2159,7 +2159,7 @@ QPushButton:pressed {
                    <string>L2 Y Emittance Ellipse</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                   <set>Qt::AlignCenter</set>
                   </property>
                   <property name="plotHeader" stdset="0">
                    <bool>true</bool>
@@ -2242,7 +2242,7 @@ QPushButton:pressed {
                    <string>L3 Y Emittance Ellipse</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                   <set>Qt::AlignCenter</set>
                   </property>
                   <property name="plotHeader" stdset="0">
                    <bool>true</bool>
@@ -2277,7 +2277,7 @@ QPushButton:pressed {
                      </size>
                     </property>
                     <property name="frameShape">
-                     <enum>QFrame::Shape::StyledPanel</enum>
+                     <enum>QFrame::StyledPanel</enum>
                     </property>
                     <property name="ellipsePlot" stdset="0">
                      <string>y</string>
@@ -2306,7 +2306,7 @@ QPushButton:pressed {
                    <string>L3 X Emittance Ellipse</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                   <set>Qt::AlignCenter</set>
                   </property>
                   <property name="plotHeader" stdset="0">
                    <bool>true</bool>
@@ -2324,7 +2324,7 @@ QPushButton:pressed {
                      </size>
                     </property>
                     <property name="frameShape">
-                     <enum>QFrame::Shape::StyledPanel</enum>
+                     <enum>QFrame::StyledPanel</enum>
                     </property>
                     <property name="ellipsePlot" stdset="0">
                      <string>x</string>
@@ -2371,7 +2371,7 @@ QPushButton:pressed {
            <string>L2 Ensemble Wire Scanner Plots</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
          <widget class="QFrame" name="frame_4">
@@ -2384,10 +2384,10 @@ QPushButton:pressed {
            </rect>
           </property>
           <property name="frameShape">
-           <enum>QFrame::Shape::StyledPanel</enum>
+           <enum>QFrame::StyledPanel</enum>
           </property>
           <property name="frameShadow">
-           <enum>QFrame::Shadow::Raised</enum>
+           <enum>QFrame::Raised</enum>
           </property>
           <widget class="QFrame" name="overviewCardX1">
            <property name="geometry">
@@ -2411,7 +2411,7 @@ QPushButton:pressed {
              <string>X Plane 1</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <set>Qt::AlignCenter</set>
             </property>
             <property name="plotHeader" stdset="0">
              <bool>true</bool>
@@ -2433,7 +2433,7 @@ QPushButton:pressed {
              </size>
             </property>
             <property name="frameShape">
-             <enum>QFrame::Shape::StyledPanel</enum>
+             <enum>QFrame::StyledPanel</enum>
             </property>
            </widget>
           </widget>
@@ -2459,7 +2459,7 @@ QPushButton:pressed {
              <string>Y Plane 1</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <set>Qt::AlignCenter</set>
             </property>
             <property name="plotHeader" stdset="0">
              <bool>true</bool>
@@ -2481,7 +2481,7 @@ QPushButton:pressed {
              </size>
             </property>
             <property name="frameShape">
-             <enum>QFrame::Shape::StyledPanel</enum>
+             <enum>QFrame::StyledPanel</enum>
             </property>
            </widget>
           </widget>
@@ -2510,7 +2510,7 @@ QPushButton:pressed {
            <string>L3 Ensemble Wire Scanner Plots</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
          <widget class="QFrame" name="frame_5">
@@ -2523,10 +2523,10 @@ QPushButton:pressed {
            </rect>
           </property>
           <property name="frameShape">
-           <enum>QFrame::Shape::StyledPanel</enum>
+           <enum>QFrame::StyledPanel</enum>
           </property>
           <property name="frameShadow">
-           <enum>QFrame::Shadow::Raised</enum>
+           <enum>QFrame::Raised</enum>
           </property>
           <widget class="QFrame" name="overviewCardX1_2">
            <property name="geometry">
@@ -2550,7 +2550,7 @@ QPushButton:pressed {
              <string>X Plane 1</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <set>Qt::AlignCenter</set>
             </property>
             <property name="plotHeader" stdset="0">
              <bool>true</bool>
@@ -2589,10 +2589,10 @@ QPushButton:pressed {
 }</string>
           </property>
           <property name="frameShape">
-           <enum>QFrame::Shape::StyledPanel</enum>
+           <enum>QFrame::StyledPanel</enum>
           </property>
           <property name="frameShadow">
-           <enum>QFrame::Shadow::Raised</enum>
+           <enum>QFrame::Raised</enum>
           </property>
           <layout class="QVBoxLayout" name="singleWirePlotLayout_2">
            <property name="spacing">
@@ -2631,10 +2631,10 @@ QPushButton:pressed {
 }</string>
              </property>
              <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
+              <enum>QFrame::StyledPanel</enum>
              </property>
              <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
+              <enum>QFrame::Raised</enum>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_2">
               <item>
@@ -2649,7 +2649,7 @@ QPushButton:pressed {
                  <string>X-Axis </string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -2665,7 +2665,7 @@ QPushButton:pressed {
                  <string>Y-Axis </string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -2698,10 +2698,10 @@ QPushButton:pressed {
 }</string>
                </property>
                <property name="frameShape">
-                <enum>QFrame::Shape::StyledPanel</enum>
+                <enum>QFrame::StyledPanel</enum>
                </property>
                <property name="frameShadow">
-                <enum>QFrame::Shadow::Raised</enum>
+                <enum>QFrame::Raised</enum>
                </property>
               </widget>
              </item>
@@ -2725,10 +2725,10 @@ QPushButton:pressed {
            </size>
           </property>
           <property name="frameShape">
-           <enum>QFrame::Shape::StyledPanel</enum>
+           <enum>QFrame::StyledPanel</enum>
           </property>
           <property name="frameShadow">
-           <enum>QFrame::Shadow::Raised</enum>
+           <enum>QFrame::Raised</enum>
           </property>
           <layout class="QGridLayout" name="gridLayout_10">
            <item row="2" column="0">
@@ -2740,10 +2740,10 @@ QPushButton:pressed {
 }</string>
              </property>
              <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
+              <enum>QFrame::StyledPanel</enum>
              </property>
              <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
+              <enum>QFrame::Raised</enum>
              </property>
              <layout class="QGridLayout" name="gridLayout_15">
               <item row="1" column="1">
@@ -2786,7 +2786,7 @@ QPushButton:pressed {
                  <string>Outter Motor Pos.</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -2796,7 +2796,7 @@ QPushButton:pressed {
                  <string>Inner Motor Pos. </string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -2806,10 +2806,10 @@ QPushButton:pressed {
            <item row="0" column="2" rowspan="3">
             <widget class="QFrame" name="ButtonsFrame_2">
              <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
+              <enum>QFrame::StyledPanel</enum>
              </property>
              <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
+              <enum>QFrame::Raised</enum>
              </property>
              <widget class="QPushButton" name="ElogPush_2">
               <property name="geometry">
@@ -2888,10 +2888,10 @@ maximumSize height = 100
            <item row="0" column="1" rowspan="2">
             <widget class="QFrame" name="ScanFrame_2">
              <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
+              <enum>QFrame::StyledPanel</enum>
              </property>
              <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
+              <enum>QFrame::Raised</enum>
              </property>
              <layout class="QGridLayout" name="gridLayout_14">
               <item row="2" column="0">
@@ -3011,10 +3011,10 @@ maximumSize height = 100
            <item row="2" column="1">
             <widget class="QFrame" name="frame_9">
              <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
+              <enum>QFrame::StyledPanel</enum>
              </property>
              <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
+              <enum>QFrame::Raised</enum>
              </property>
              <layout class="QGridLayout" name="gridLayout_11">
               <item row="1" column="0">
@@ -3063,10 +3063,10 @@ maximumSize height = 100
 }</string>
              </property>
              <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
+              <enum>QFrame::StyledPanel</enum>
              </property>
              <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
+              <enum>QFrame::Raised</enum>
              </property>
              <widget class="QLabel" name="label_5">
               <property name="geometry">
@@ -3249,7 +3249,7 @@ maximumSize height = 100
          <string>FACET-II Wire Scanner </string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
