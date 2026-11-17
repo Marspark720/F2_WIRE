@@ -2895,7 +2895,7 @@ maximumSize height = 100
              </property>
              <layout class="QGridLayout" name="gridLayout_14">
               <item row="2" column="0">
-               <widget class="QPushButton" name="QuadScanYpush_2">
+               <widget class="QPushButton" name="QuadScanYpush">
                 <property name="font">
                  <font>
                   <fontweight>DemiBold</fontweight>
@@ -2925,7 +2925,7 @@ maximumSize height = 100
                </widget>
               </item>
               <item row="1" column="0">
-               <widget class="QPushButton" name="QuadScanXpush_2">
+               <widget class="QPushButton" name="QuadScanXpush">
                 <property name="font">
                  <font>
                   <fontweight>DemiBold</fontweight>
@@ -2988,7 +2988,7 @@ maximumSize height = 100
                </widget>
               </item>
               <item row="0" column="0">
-               <widget class="QPushButton" name="QuadScanXYpush_2">
+               <widget class="QPushButton" name="QuadScanXYpush">
                 <property name="font">
                  <font>
                   <fontweight>DemiBold</fontweight>
