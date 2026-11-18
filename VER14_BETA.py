@@ -41,7 +41,7 @@ import elog_client as ELOG
 # SCRIPT_DIR = Path(__file__).resolve().parent
 SCRIPT_DIR = Path(__file__).resolve().parent if "__file__" in globals() else Path.cwd()
 # UI_FILENAME = "WireScanner_FirstPASS_6_gpt_light.ui"
-UI_FILENAME = "VER12_NWA_BETA.ui"
+UI_FILENAME = "VER14_NWA_BETA.ui"
 # "WireScanner_FirstPASS_6_gpt_light.ui"
 UI_FALLBACK = Path(
     "/Users/mparker/Library/CloudStorage/OneDrive-SLACNationalAcceleratorLaboratory/ACTIVE WIRE_SCANNER FILE/" + UI_FILENAME)
