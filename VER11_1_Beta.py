@@ -1,6 +1,7 @@
 # Logistical Shit
 import sys
-sys.path.append('/usr/local/facet/tools/')
+sys.path.append('/usr/local/facet/tools/python')
+sys.path.append('/usr/local/facet/tools/python/F2_pytools')
 from F2_pytools.mags import set_magnets
 from pathlib import Path
 
