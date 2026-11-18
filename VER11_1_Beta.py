@@ -711,8 +711,12 @@ class MyGui(QtWidgets.QWidget):
                 #quad_pv_set.put(float(ki), wait=True) # quad strength in [kG] 
 
                 # check if properly set
+                tol = 1e-1
                 ki_readback = quad_pv_get.get()
-                print(f"[quad_scan_all] Current quad value: {ki_readback} [kG]")
+                while abs(ki_readback-ki) > tol:
+                    print(f"[quad_scan_all] Current quad value: {ki_readback} [kG]")
+                    ki_readback = quad_pv_get.get()
+                print(f"[quad_scan_all] Current quad value: {ki_readback} [kG]")                   
 
                 #####################
                 # perform wire scan #
@@ -734,9 +738,13 @@ class MyGui(QtWidgets.QWidget):
             # set back OG quad value
             set_magnets([quad_pv_root], [float(ki_OG)])
 
-            # check if OG properly set
+            # check if properly set
+            tol = 1e-1
             ki_OG_readback = quad_pv_get.get()
-            print(f"[quad_scan_all] Current quad value: {ki_OG_readback} [kG]")
+            while abs(ki_OG_readback-ki_OG) > tol:
+                print(f"[quad_scan_all] Current quad value: {ki_OG_readback} [kG]")
+                ki_OG_readback = quad_pv_get.get()
+            print(f"[quad_scan_all] Current quad value: {ki_OG_readback} [kG]")                   
 
 
     def scan_all(self, area="L2", axis="X"):
