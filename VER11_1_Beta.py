@@ -732,10 +732,10 @@ class MyGui(QtWidgets.QWidget):
 
 
             # set back OG quad value
-            set_magnets([quad_pv_OG], [float(ki_OG)])
+            set_magnets([quad_pv_root], [float(ki_OG)])
 
             # check if OG properly set
-            ki_OG_readback = quad_pv_OG.get()
+            ki_OG_readback = quad_pv_get.get()
             print(f"[quad_scan_all] Current quad value: {ki_OG_readback} [kG]")
 
 
