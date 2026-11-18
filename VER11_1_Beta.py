@@ -684,6 +684,8 @@ class MyGui(QtWidgets.QWidget):
             ######################
 
             for ki in self.quad_k_array:
+                
+                print(f"[quad_scan_all] Current k1: {ki}")
 
                 #####################
                 # set quad strength #
@@ -694,6 +696,9 @@ class MyGui(QtWidgets.QWidget):
                 quad_pv_get_str = f"{quad_pv_root}:BACT"
                 quad_pv_set = get_pv(quad_pv_set_str)
                 quad_pv_get = get_pv(quad_pv_get_str)
+
+                print(quad_pv_set_str, quad_pv_get_str)
+
                 quad_pv_set.put(float(ki), wait=True) # quad strength in [kG] 
                 ki_readback = quad_pv_get.get()
                 print(f"[quad_scan_all] Current quad value: {ki_readback} [kG]")

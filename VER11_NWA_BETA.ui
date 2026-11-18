@@ -3146,18 +3146,17 @@ maximumSize height = 100
               </property>
               <item>
                <property name="text">
-                <string>LI20:LGPS:1910:BDES</string>
+                <string>LI20:LGPS:1910</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>LI20:LGPS:3204:BDES
-</string>
+                <string>LI20:LGPS:3204</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>LI20:LGPS:3031:BDES</string>
+                <string>LI20:LGPS:3031</string>
                </property>
               </item>
              </widget>
