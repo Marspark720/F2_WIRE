@@ -677,6 +677,11 @@ class MyGui(QtWidgets.QWidget):
         """
         only works for area=IP and axis="XY"
         """
+
+        # caputre OG quad value
+        quad_pv_OG = f"{quad_pv_root}:BDES"
+        ki_OG = quad_pv_OG.get()
+
         if self.quad_k_array is None:
             raise ValueError(f"self.quad_k_array is none: {self.quad_k_array}. Set quad scan points first!")
         else:
@@ -722,6 +727,15 @@ class MyGui(QtWidgets.QWidget):
                     raise ValueError(f"Invalid value for axis: {axis}. Has to be X, Y or XY!")
 
                 print("[quad_scan_all] wire scan complete")
+
+
+            # set back OG quad value
+            set_magnets([quad_pv_OG], [float(ki_OG)])
+
+            # check if OG properly set
+            ki_OG_readback = quad_pv_OG.get()
+            print(f"[quad_scan_all] Current quad value: {ki_OG_readback} [kG]")
+
 
     def scan_all(self, area="L2", axis="X"):
         if area == "L2" and axis == "X":
