@@ -1,7 +1,7 @@
 # Logistical Shit
 import sys
 sys.path.append('/usr/local/facet/tools/python')
-sys.path.append('/usr/local/facet/tools/python/F2_pytools')
+sys.path.append('/usr/local/facet/tools/')
 from F2_pytools.mags import set_magnets
 from pathlib import Path
 
@@ -680,6 +680,7 @@ class MyGui(QtWidgets.QWidget):
         """
 
         # caputre OG quad value
+        quad_pv_root = self.QuadPVDropdown.currentText()
         quad_pv_OG = f"{quad_pv_root}:BDES"
         ki_OG = quad_pv_OG.get()
 
@@ -699,7 +700,6 @@ class MyGui(QtWidgets.QWidget):
                 # set quad strength #
                 #####################
 
-                quad_pv_root = self.QuadPVDropdown.currentText()
                 #quad_pv_set_str = f"{quad_pv_root}:BDES"
                 quad_pv_get_str = f"{quad_pv_root}:BACT"
                 #quad_pv_set = get_pv(quad_pv_set_str)
