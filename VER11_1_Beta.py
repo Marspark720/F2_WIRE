@@ -681,7 +681,8 @@ class MyGui(QtWidgets.QWidget):
 
         # caputre OG quad value
         quad_pv_root = self.QuadPVDropdown.currentText()
-        quad_pv_OG = f"{quad_pv_root}:BDES"
+        quad_pv_OG_str = f"{quad_pv_root}:BDES"
+        quad_pv_OG = get_pv(quad_pv_OG_str)
         ki_OG = quad_pv_OG.get()
 
         if self.quad_k_array is None:
