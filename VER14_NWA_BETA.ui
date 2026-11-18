@@ -2635,7 +2635,7 @@ QPushButton:pressed {
            </property>
            <property name="font">
             <font>
-             <fontweight>DemiBold</fontweight>
+             <weight>63</weight>
             </font>
            </property>
            <property name="styleSheet">
@@ -2675,7 +2675,7 @@ QPushButton#l2XAbortPush {
            </property>
            <property name="font">
             <font>
-             <fontweight>DemiBold</fontweight>
+             <weight>63</weight>
             </font>
            </property>
            <property name="styleSheet">
@@ -2705,7 +2705,7 @@ maximumSize height = 100
             <widget class="QPushButton" name="QuadScanYpush">
              <property name="font">
               <font>
-               <fontweight>DemiBold</fontweight>
+               <weight>63</weight>
               </font>
              </property>
              <property name="text">
@@ -2723,7 +2723,7 @@ maximumSize height = 100
             <widget class="QPushButton" name="ParkXpush_2">
              <property name="font">
               <font>
-               <fontweight>DemiBold</fontweight>
+               <weight>63</weight>
               </font>
              </property>
              <property name="text">
@@ -2735,7 +2735,7 @@ maximumSize height = 100
             <widget class="QPushButton" name="QuadScanXpush">
              <property name="font">
               <font>
-               <fontweight>DemiBold</fontweight>
+               <weight>63</weight>
               </font>
              </property>
              <property name="text">
@@ -2753,7 +2753,7 @@ maximumSize height = 100
             <widget class="QPushButton" name="ParkPush_2">
              <property name="font">
               <font>
-               <fontweight>DemiBold</fontweight>
+               <weight>63</weight>
               </font>
              </property>
              <property name="text">
@@ -2765,7 +2765,7 @@ maximumSize height = 100
             <widget class="QPushButton" name="ParkYpush_2">
              <property name="font">
               <font>
-               <fontweight>DemiBold</fontweight>
+               <weight>63</weight>
               </font>
              </property>
              <property name="text">
@@ -2798,7 +2798,7 @@ maximumSize height = 100
             <widget class="QPushButton" name="QuadScanXYpush">
              <property name="font">
               <font>
-               <fontweight>DemiBold</fontweight>
+               <weight>63</weight>
               </font>
              </property>
              <property name="text">
