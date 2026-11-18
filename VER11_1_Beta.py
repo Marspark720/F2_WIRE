@@ -1,5 +1,7 @@
 # Logistical Shit
 import sys
+sys.path.append('/usr/local/facet/tools/')
+from F2_pytools.mags import set_magnets
 from pathlib import Path
 
 # SLAC Shit
@@ -692,14 +694,16 @@ class MyGui(QtWidgets.QWidget):
                 #####################
 
                 quad_pv_root = self.QuadPVDropdown.currentText()
-                quad_pv_set_str = f"{quad_pv_root}:BDES"
+                #quad_pv_set_str = f"{quad_pv_root}:BDES"
                 quad_pv_get_str = f"{quad_pv_root}:BACT"
-                quad_pv_set = get_pv(quad_pv_set_str)
+                #quad_pv_set = get_pv(quad_pv_set_str)
                 quad_pv_get = get_pv(quad_pv_get_str)
 
-                print(quad_pv_set_str, quad_pv_get_str)
+                # set quad strength
+                set_magnets([quad_pv_root], [float(ki)])
+                #quad_pv_set.put(float(ki), wait=True) # quad strength in [kG] 
 
-                quad_pv_set.put(float(ki), wait=True) # quad strength in [kG] 
+                # check if properly set
                 ki_readback = quad_pv_get.get()
                 print(f"[quad_scan_all] Current quad value: {ki_readback} [kG]")
 
