@@ -83,6 +83,8 @@ class MyGui(QtWidgets.QWidget):
         self.QuadKMinBox.editingFinished.connect(self.update_quad_k_array)
         self.QuadKMaxBox.editingFinished.connect(self.update_quad_k_array)
         self.QuadStepsBox.editingFinished.connect(self.update_quad_k_array)
+        self.quad_scan_fitted_rms_dict = {}
+        self.quad_scan_fitted_rms_error_dict = {}
 
         self.abort_requested = False
         self.axis = None
@@ -140,13 +142,18 @@ class MyGui(QtWidgets.QWidget):
         #self.Xaxis_Label.hide()
         #self.Yaxis_Label.hide()
 
+        # quad scan frame
+        self.QuadScanPlot_figure, self.QuadScanPlot_canvas, self.QuadScanPlot_axes = make_plot_frame(
+        self.QuadScanPlot)
+
         ################################################################################################################
         # Quad Scan Wire scan Tab
         ################################################################################################################
+
         # Scan Buttons:
         self.QuadScanXYpush.clicked.connect(lambda: self.quad_scan_all(axis="XY"))
-        self.QuadScanXpush.clicked.connect(lambda: self.quad_scan_all(axis="X"))
-        self.QuadScanYpush.clicked.connect(lambda: self.quad_scan_all(axis="Y"))
+        self.QuadScanXpush.clicked.connect( lambda: self.quad_scan_all(axis= "X"))
+        self.QuadScanYpush.clicked.connect( lambda: self.quad_scan_all(axis= "Y"))
 
         ################################################################################################################
         # Single Wire scan Tab
@@ -459,6 +466,58 @@ class MyGui(QtWidgets.QWidget):
         self.update_single_subplots()
         self.SingleWirePlot_canvas.draw_idle()
 
+        # Save the figure from this scan.
+        # Save the current single-wire figure.
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+        self.outfile = Path(f"WIRE_{self.sec}_{self.loc}_{axis}_{timestamp}.png")
+
+        self.SingleWirePlot_figure.savefig(self.outfile, dpi=150, bbox_inches="tight", )
+
+        # Remember the scan for the Elog button.
+        self.last_scan = {
+            "wire": f"WIRE:{self.sec}:{self.loc}",
+            "axis": axis,
+            "figure": self.SingleWirePlot_figure,
+            "outfile": self.outfile,
+            "raw_rms": result["raw_rms"],
+            "raw_rms_error": error_result["raw_rms_error"],
+            "fitted_rms": result["fitted_rms"],
+            "fitted_rms_error": error_result["fitted_rms_error"],
+            "raw_skew": result["beam_skew"],
+            "raw_kurtosis": result["beam_kurtosis"],
+            "fitted_skew": result["fitted_skew"],
+            "fitted_kurtosis": result["fitted_kurtosis"],
+        }
+
+        print(f"Figure saved: {self.outfile.resolve()}")
+        self.elog_plot()
+        print("Sent to Facet Elog")
+
+        if self.axis == "X":
+            self.InnerposX.setText(str(wire.OGlower_pv.get()))
+            self.OutterposX.setText(str(wire.OGupper_pv.get()))
+            self.X_Size.setText(f'{result["fitted_rms"]:.3f} ± {error_result["fitted_rms_error"]:.3f}')
+            # if self.sec == "LI20" and self.loc == "3179":
+            # ep.caput("WIRE:LI20:3179:XRMS", result["raw_rms"], )
+
+        elif self.axis == "Y":
+            self.InnerposY.setText(str(wire.OGlower_pv.get()))
+            self.OutterposY.setText(str(wire.OGupper_pv.get()))
+            self.Y_Size.setText(f'{result["fitted_rms"]:.3f} ± {error_result["fitted_rms_error"]:.3f}')
+
+
+        ##################
+        # append to dict #
+        ##################
+
+        if axis not in self.quad_scan_fitted_rms_dict.keys():
+            self.quad_scan_fitted_rms_dict[axis] = [self.last_scan["fitted_rms"]]
+            self.quad_scan_fitted_rms_error_dict[axis] = [self.last_scan["fitted_rms_error"]]
+        else:
+            self.quad_scan_fitted_rms_dict[axis].append(self.last_scan["fitted_rms"])
+            self.quad_scan_fitted_rms_error_dict[axis].append(self.last_scan["fitted_rms_error"])
+
+
     def singlesscan(self, sec=None, loc=None, axis=None, progressBar=None):
         self.abort_requested = False
         axis = "X" if axis is None else axis.upper()
@@ -679,6 +738,7 @@ class MyGui(QtWidgets.QWidget):
                 ep.caput("WIRE:LI20:3179:YRMS", result["raw_rms"])
 
     def quad_scan_all(self, axis="XY"):
+
         """
         only works for area=IP and axis="XY"
         """
@@ -693,6 +753,10 @@ class MyGui(QtWidgets.QWidget):
             raise ValueError(f"self.quad_k_array is none: {self.quad_k_array}. Set quad scan points first!")
         else:
             
+            # new scan: forget the results of previous scans
+            self.quad_scan_fitted_rms_dict = {}
+            self.quad_scan_fitted_rms_error_dict = {}
+
             ######################
             # loop over k values #
             ######################
@@ -728,7 +792,8 @@ class MyGui(QtWidgets.QWidget):
 
                 if axis=="XY":
                     self.quad_singlesscan(axis="X", progressBar=self.progressBar_6)
-                    self.quad_singlesscan(axis="Y", progressBar=self.progressBar_6)
+                    if not self.abort_requested:
+                        self.quad_singlesscan(axis="Y", progressBar=self.progressBar_6)
                 elif axis=="X":
                     self.quad_singlesscan(axis="X", progressBar=self.progressBar_6)
                 elif axis=="Y":
@@ -754,6 +819,66 @@ class MyGui(QtWidgets.QWidget):
                 ki_OG_readback = quad_pv_get.get()
             print(f"[quad_scan_all] Current quad value: {ki_OG_readback} [kG]")                   
 
+            #######################
+            # make plot of k1-rms #
+            #######################
+                
+            self.quad_scan_plot()
+
+
+
+    def quad_scan_plot(self):
+        """Plot fitted rms vs k1 on the GUI canvas (self.QuadScanPlot_canvas).
+        One subplot for an X or a Y scan, two subplots (X | Y) for an XY scan."""
+        if self.quad_k_array is None:
+            raise ValueError(f"self.quad_k_array is none: {self.quad_k_array}. Set quad scan points first!")
+
+        assert self.quad_scan_fitted_rms_dict.keys() == self.quad_scan_fitted_rms_error_dict.keys(), "fitted rms and fitted rms error dict keys do not agree!"
+        axes_keys = [k for k in ("X", "Y") if k in self.quad_scan_fitted_rms_dict]  # ['X', 'Y'] or ['X'] or ['Y']
+
+        # use the figure that lives inside the GUI frame and start from a blank page
+        fig = self.QuadScanPlot_figure
+        fig.clear()
+
+        if len(axes_keys) == 0:  # nothing measured yet (e.g. aborted during the first point)
+            self.QuadScanPlot_canvas.draw_idle()
+            return None
+
+        # squeeze=False always returns a 2D array, so ax[i] works for 1 and for 2 subplots
+        ax = fig.subplots(1, len(axes_keys), squeeze=False)[0]
+
+        ######################
+        # loop over X Y axes #
+        ######################
+
+        for i, ax_key in enumerate(axes_keys):
+
+            rms_list = self.quad_scan_fitted_rms_dict[ax_key]
+            rms_error_list = self.quad_scan_fitted_rms_error_dict[ax_key]
+            assert len(rms_list) == len(rms_error_list), "rms and rms error lists have different length!"
+
+            ########
+            # plot #
+            ########
+
+            # n < len(k_array) if the scan was aborted
+            n = len(rms_list)
+            ax[i].errorbar(self.quad_k_array[:n], rms_list, yerr=rms_error_list, c="b", capsize=3)
+
+            #################
+            # plot settings #
+            #################
+
+            ax[i].set_xlabel("k1 [kG]")
+            ax[i].set_ylabel("fitted rms [um]")
+
+            quad_pv_root = self.QuadPVDropdown.currentText()
+            ax[i].set_title(f"{quad_pv_root} quad scan, {ax_key} axis wire scan")
+
+        fig.tight_layout()
+        self.QuadScanPlot_canvas.draw_idle()
+
+        return fig, ax
 
     def scan_all(self, area="L2", axis="X"):
         if area == "L2" and axis == "X":
