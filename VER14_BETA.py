@@ -516,7 +516,81 @@ class MyGui(QtWidgets.QWidget):
         else:
             self.quad_scan_fitted_rms_dict[axis].append(self.last_scan["fitted_rms"])
             self.quad_scan_fitted_rms_error_dict[axis].append(self.last_scan["fitted_rms_error"])
-
+            
+    def INJ_quad_scan(self):
+        """
+        self.quad_figure, self.quad_canvas, self.quad_axes = make_plot_frame( self.FRAME_NAME )
+        only works for area=INjector  and axis="XY"
+        its currently defaulted to work only for the 571 quad in the Injector.
+        """
+        ######################
+        # initial Values #
+        ######################
+        quadSet = get_pv("QUAD:IN10:525:BCTRL")
+        quadRbv = get_pv("QUAD:IN10:525:BACT")
+        QuadOG_val = quadSet.get()
+        Qsteps = len(self.quad_k_array)
+        self.rmsX = np.zeros(Qsteps)
+        self.rmsX_error = np.zeros(Qsteps)
+        self.rmsY = np.zeros(Qsteps)
+        self.rmsY_error = np.zeros(Qsteps)
+        ######################
+        # loop over k values #
+        ######################
+        for i,ki in enumerate(self.quad_k_array):
+            quadSet.put(ki, wait=True)
+            print(quadRbv.get())
+            self.rmsX[i], self.rmsX_error[i], self.rmsY[i], self.rmsY_error[i] = self.XY_profile()
+            print(f"Step {i + 1}/{Qsteps}\nQuad set to: {ki} [kg]")
+        ######################
+        # plot Controls #
+        ######################
+        ax = self.quad_axes
+        ax.clear()
+        ax.errorbar(self.quad_k_array, self.rmsX, yerr=self.rmsX_error, fmt="o-", capsize=4, label="X")
+        ax.errorbar(self.quad_k_array, self.rmsY, yerr=self.rmsY_error, fmt="o-", capsize=4, label="Y")
+        ax.set_xlabel("Quad setting [kG]")
+        ax.set_ylabel("Beam RMS (µm)")
+        ax.legend()
+        self.quad_figure.tight_layout()
+        self.quad_canvas.draw_idle()
+    
+        return self.rmsX, self.rmsY
+    
+    def XY_profile(self,profmon = "PROF:IN10:571", nshots = 5 ):
+        shutter = get_pv("IOS:SYS1:MP01:MSHUTCTL")
+        profmon = get_pv(profmon)
+        shutter.put(0, wait=True)
+        bg = profmon.get(use_monitor=False)
+        shutter.put(1, wait=True)
+        x_shots = np.zeros(nshots)
+        y_shots = np.zeros(nshots)
+    
+        for i in range(nshots):
+            pixels = profmon.get(use_monitor=False)
+            if pixels is None:
+                raise RuntimeError("I Didnt See an Image, Try again...")
+            image = np.asarray(pixels, dtype=float)
+            bg    = np.asarray(bg, dtype=float)
+            image = image - bg
+            ppum = 0.25 # Pixels per um
+            rms = {}
+    
+            for plane, axis in [("X", 0), ("Y", 1)]:
+                profile = image.sum(axis=axis)
+                weights = np.clip(profile, 0, None)
+                position = np.arange(profile.size) / ppum
+                centroid = np.average(position, weights=weights)
+                rms[plane] = np.sqrt(np.average((position - centroid) ** 2, weights=weights))
+            x_shots[i] = rms["X"]
+            y_shots[i] = rms["Y"]
+        self.Xrms = x_shots.mean()
+        self.Yrms = y_shots.mean()
+        # Uncertainty part requires nshots >= 2 atleast to work
+        self.Xrms_error = x_shots.std(ddof=1) / np.sqrt(nshots)
+        self.Yrms_error = y_shots.std(ddof=1) / np.sqrt(nshots)
+    
+        return self.Xrms,self.Xrms_error, self.Yrms, self.Yrms_error
 
     def singlesscan(self, sec=None, loc=None, axis=None, progressBar=None):
         self.abort_requested = False
