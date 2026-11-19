@@ -1,5 +1,8 @@
 # Logistical Shit
 import sys
+sys.path.append('/usr/local/facet/tools/python')
+sys.path.append('/usr/local/facet/tools/python/F2_pytools')
+from F2_pytools.mags import set_magnets
 from pathlib import Path
 
 # SLAC Shit
@@ -13,6 +16,7 @@ from time import sleep, monotonic
 # imports for the QT Shit
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QVBoxLayout
+from PyQt5.QtGui import QDoubleValidator, QIntValidator
 
 # Math/Numerical Shit
 import numpy as np
@@ -37,7 +41,7 @@ import elog_client as ELOG
 # SCRIPT_DIR = Path(__file__).resolve().parent
 SCRIPT_DIR = Path(__file__).resolve().parent if "__file__" in globals() else Path.cwd()
 # UI_FILENAME = "WireScanner_FirstPASS_6_gpt_light.ui"
-UI_FILENAME = "VER12_NWA_BETA.ui"
+UI_FILENAME = "VER14_NWA_BETA.ui"
 # "WireScanner_FirstPASS_6_gpt_light.ui"
 UI_FALLBACK = Path(
     "/Users/mparker/Library/CloudStorage/OneDrive-SLACNationalAcceleratorLaboratory/ACTIVE WIRE_SCANNER FILE/" + UI_FILENAME)
@@ -69,6 +73,19 @@ class MyGui(QtWidgets.QWidget):
         #elf.tabWidget.removeTab(self.tabWidget.indexOf(self.AllWirePlots))
         #self.tabWidget.removeTab(self.tabWidget.indexOf(self.L3EnsemblePlots))
 
+        # Quad scan tab: only allow numbers in the boxes
+        self.QuadKMinBox.setValidator(QDoubleValidator(-1000.0, 1000.0, 4))
+        self.QuadKMaxBox.setValidator(QDoubleValidator(-1000.0, 1000.0, 4))
+        self.QuadStepsBox.setValidator(QIntValidator(1, 1000))
+
+        # Quad scan tab: build the k array whenever a value is entered
+        self.quad_k_array = None
+        self.QuadKMinBox.editingFinished.connect(self.update_quad_k_array)
+        self.QuadKMaxBox.editingFinished.connect(self.update_quad_k_array)
+        self.QuadStepsBox.editingFinished.connect(self.update_quad_k_array)
+        self.quad_scan_fitted_rms_dict = {}
+        self.quad_scan_fitted_rms_error_dict = {}
+
         self.abort_requested = False
         self.axis = None
         self.last_scan = None
@@ -78,7 +95,7 @@ class MyGui(QtWidgets.QWidget):
             ("L3", "X"): {},
             ("L3", "Y"): {}, }
 
-        for progress_bar in [self.progressBar_1, self.progressBar_2, self.progressBar_3, self.progressBar_4, self.progressBar_5,]:
+        for progress_bar in [self.progressBar_1, self.progressBar_2, self.progressBar_3, self.progressBar_4, self.progressBar_5, self.progressBar_6,]:
             progress_bar.setValue(0)
 
 
@@ -124,6 +141,19 @@ class MyGui(QtWidgets.QWidget):
         self.single_scan_results = {}
         #self.Xaxis_Label.hide()
         #self.Yaxis_Label.hide()
+
+        # quad scan frame
+        self.QuadScanPlot_figure, self.QuadScanPlot_canvas, self.QuadScanPlot_axes = make_plot_frame(
+        self.QuadScanPlot)
+
+        ################################################################################################################
+        # Quad Scan Wire scan Tab
+        ################################################################################################################
+
+        # Scan Buttons:
+        self.QuadScanXYpush.clicked.connect(lambda: self.quad_scan_all(axis="XY"))
+        self.QuadScanXpush.clicked.connect( lambda: self.quad_scan_all(axis= "X"))
+        self.QuadScanYpush.clicked.connect( lambda: self.quad_scan_all(axis= "Y"))
 
         ################################################################################################################
         # Single Wire scan Tab
@@ -363,6 +393,131 @@ class MyGui(QtWidgets.QWidget):
         figure.tight_layout()
         self.SingleWirePlot_canvas.draw_idle()
 
+    def quad_singlesscan(self, axis=None, progressBar=None):
+
+        ####################       
+        # init wire object #
+        ####################
+ 
+        self.abort_requested = False
+        axis = "X" if axis is None else axis.upper()
+
+        self.axis = axis
+        self.area = "IP"
+        self.sec = "LI20"
+        self.loc = "3179"
+        self.wirePV = f"WIRE:{self.sec}:{self.loc}"
+
+        wire = wireFunk(wirePV=self.wirePV, area=self.area, axis=axis)
+
+        #####################
+        # init progress bar #
+        #####################
+
+        if progressBar is not None:
+            progressBar.setValue(0)
+
+        def update_scan_progress(value):
+            if progressBar is not None:
+                progressBar.setValue(value)
+                QtWidgets.QApplication.processEvents()
+            return self.abort_requested
+
+        ####################
+        # do the wire scan #
+        ####################
+
+        x, PMTdata = wire.scanfunk(progress_callback=update_scan_progress)
+
+        if self.abort_requested:
+            print(f"{self.axis} scan aborted")
+            return
+
+        ################
+        # process data #
+        ################
+
+        smooth_signal = PMTdata.copy()
+        finder = PF_FINDER(x, smooth_signal, self.wirePV)
+        finder.find_peaks_and_widths()
+
+        try:
+            result = finder.calculate_beam_rms(raw_y=PMTdata, smoothed_y=smooth_signal, )
+            error_result = finder.calculate_single_scan_error(raw_y=PMTdata, smoothed_y=smooth_signal, n_bootstrap=3, )
+        except RuntimeError:
+            print("WARNING: Gaussian fit failed; using raw beam values")
+
+            result = finder.calculate_beam_rms(raw_y=PMTdata, smoothed_y=smooth_signal, fit_asym_gauss=False, )
+
+            result["fitted_rms"] = result["raw_rms"]
+            result["corrected_fitted_rms"] = result["corrected_raw_rms"]
+            result["fitted_centroid"] = result["beam_centroid"]
+            result["fitted_skew"] = result["beam_skew"]
+            result["fitted_kurtosis"] = result["beam_kurtosis"]
+
+            error_result = {"raw_rms_error": 0.0, "fitted_rms_error": 0.0, }
+
+        self.single_scan_results[axis] = {"finder": finder, "result": result, "error_result": error_result, }
+
+        ###############
+        # plot on gui #
+        ###############
+
+        self.update_single_subplots()
+        self.SingleWirePlot_canvas.draw_idle()
+
+        # Save the figure from this scan.
+        # Save the current single-wire figure.
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+        self.outfile = Path(f"WIRE_{self.sec}_{self.loc}_{axis}_{timestamp}.png")
+
+        self.SingleWirePlot_figure.savefig(self.outfile, dpi=150, bbox_inches="tight", )
+
+        # Remember the scan for the Elog button.
+        self.last_scan = {
+            "wire": f"WIRE:{self.sec}:{self.loc}",
+            "axis": axis,
+            "figure": self.SingleWirePlot_figure,
+            "outfile": self.outfile,
+            "raw_rms": result["raw_rms"],
+            "raw_rms_error": error_result["raw_rms_error"],
+            "fitted_rms": result["fitted_rms"],
+            "fitted_rms_error": error_result["fitted_rms_error"],
+            "raw_skew": result["beam_skew"],
+            "raw_kurtosis": result["beam_kurtosis"],
+            "fitted_skew": result["fitted_skew"],
+            "fitted_kurtosis": result["fitted_kurtosis"],
+        }
+
+        print(f"Figure saved: {self.outfile.resolve()}")
+        self.elog_plot()
+        print("Sent to Facet Elog")
+
+        if self.axis == "X":
+            self.InnerposX.setText(str(wire.OGlower_pv.get()))
+            self.OutterposX.setText(str(wire.OGupper_pv.get()))
+            self.X_Size.setText(f'{result["fitted_rms"]:.3f} ± {error_result["fitted_rms_error"]:.3f}')
+            # if self.sec == "LI20" and self.loc == "3179":
+            # ep.caput("WIRE:LI20:3179:XRMS", result["raw_rms"], )
+
+        elif self.axis == "Y":
+            self.InnerposY.setText(str(wire.OGlower_pv.get()))
+            self.OutterposY.setText(str(wire.OGupper_pv.get()))
+            self.Y_Size.setText(f'{result["fitted_rms"]:.3f} ± {error_result["fitted_rms_error"]:.3f}')
+
+
+        ##################
+        # append to dict #
+        ##################
+
+        if axis not in self.quad_scan_fitted_rms_dict.keys():
+            self.quad_scan_fitted_rms_dict[axis] = [self.last_scan["fitted_rms"]]
+            self.quad_scan_fitted_rms_error_dict[axis] = [self.last_scan["fitted_rms_error"]]
+        else:
+            self.quad_scan_fitted_rms_dict[axis].append(self.last_scan["fitted_rms"])
+            self.quad_scan_fitted_rms_error_dict[axis].append(self.last_scan["fitted_rms_error"])
+
+
     def singlesscan(self, sec=None, loc=None, axis=None, progressBar=None):
         self.abort_requested = False
         axis = "X" if axis is None else axis.upper()
@@ -582,6 +737,149 @@ class MyGui(QtWidgets.QWidget):
             elif self.axis == "Y":
                 ep.caput("WIRE:LI20:3179:YRMS", result["raw_rms"])
 
+    def quad_scan_all(self, axis="XY"):
+
+        """
+        only works for area=IP and axis="XY"
+        """
+
+        # caputre OG quad value
+        quad_pv_root = self.QuadPVDropdown.currentText()
+        quad_pv_OG_str = f"{quad_pv_root}:BDES"
+        quad_pv_OG = get_pv(quad_pv_OG_str)
+        ki_OG = quad_pv_OG.get()
+
+        if self.quad_k_array is None:
+            raise ValueError(f"self.quad_k_array is none: {self.quad_k_array}. Set quad scan points first!")
+        else:
+            
+            # new scan: forget the results of previous scans
+            self.quad_scan_fitted_rms_dict = {}
+            self.quad_scan_fitted_rms_error_dict = {}
+
+            ######################
+            # loop over k values #
+            ######################
+
+            for ki in self.quad_k_array:
+                
+                print(f"[quad_scan_all] Current k1: {ki}")
+
+                #####################
+                # set quad strength #
+                #####################
+
+                #quad_pv_set_str = f"{quad_pv_root}:BDES"
+                quad_pv_get_str = f"{quad_pv_root}:BACT"
+                #quad_pv_set = get_pv(quad_pv_set_str)
+                quad_pv_get = get_pv(quad_pv_get_str)
+
+                # set quad strength
+                set_magnets([quad_pv_root], [float(ki)])
+                #quad_pv_set.put(float(ki), wait=True) # quad strength in [kG] 
+
+                # check if properly set
+                tol = 1e-1
+                ki_readback = quad_pv_get.get()
+                while abs(ki_readback-ki) > tol:
+                    print(f"[quad_scan_all] Current quad value: {ki_readback} [kG]")
+                    ki_readback = quad_pv_get.get()
+                print(f"[quad_scan_all] Current quad value: {ki_readback} [kG]")                   
+
+                #####################
+                # perform wire scan #
+                #####################
+
+                if axis=="XY":
+                    self.quad_singlesscan(axis="X", progressBar=self.progressBar_6)
+                    if not self.abort_requested:
+                        self.quad_singlesscan(axis="Y", progressBar=self.progressBar_6)
+                elif axis=="X":
+                    self.quad_singlesscan(axis="X", progressBar=self.progressBar_6)
+                elif axis=="Y":
+                    self.quad_singlesscan(axis="Y", progressBar=self.progressBar_6)
+                else:
+                    raise ValueError(f"Invalid value for axis: {axis}. Has to be X, Y or XY!")
+
+                if self.abort_requested:
+                    print("[quad_scan_all] aborted, restoring quad")
+                    break
+
+                print("[quad_scan_all] wire scan complete")
+
+
+            # set back OG quad value
+            set_magnets([quad_pv_root], [float(ki_OG)])
+
+            # check if properly set
+            tol = 1e-1
+            ki_OG_readback = quad_pv_get.get()
+            while abs(ki_OG_readback-ki_OG) > tol:
+                print(f"[quad_scan_all] Current quad value: {ki_OG_readback} [kG]")
+                ki_OG_readback = quad_pv_get.get()
+            print(f"[quad_scan_all] Current quad value: {ki_OG_readback} [kG]")                   
+
+            #######################
+            # make plot of k1-rms #
+            #######################
+                
+            self.quad_scan_plot()
+
+
+
+    def quad_scan_plot(self):
+        """Plot fitted rms vs k1 on the GUI canvas (self.QuadScanPlot_canvas).
+        One subplot for an X or a Y scan, two subplots (X | Y) for an XY scan."""
+        if self.quad_k_array is None:
+            raise ValueError(f"self.quad_k_array is none: {self.quad_k_array}. Set quad scan points first!")
+
+        assert self.quad_scan_fitted_rms_dict.keys() == self.quad_scan_fitted_rms_error_dict.keys(), "fitted rms and fitted rms error dict keys do not agree!"
+        axes_keys = [k for k in ("X", "Y") if k in self.quad_scan_fitted_rms_dict]  # ['X', 'Y'] or ['X'] or ['Y']
+
+        # use the figure that lives inside the GUI frame and start from a blank page
+        fig = self.QuadScanPlot_figure
+        fig.clear()
+
+        if len(axes_keys) == 0:  # nothing measured yet (e.g. aborted during the first point)
+            self.QuadScanPlot_canvas.draw_idle()
+            return None
+
+        # squeeze=False always returns a 2D array, so ax[i] works for 1 and for 2 subplots
+        ax = fig.subplots(1, len(axes_keys), squeeze=False)[0]
+
+        ######################
+        # loop over X Y axes #
+        ######################
+
+        for i, ax_key in enumerate(axes_keys):
+
+            rms_list = self.quad_scan_fitted_rms_dict[ax_key]
+            rms_error_list = self.quad_scan_fitted_rms_error_dict[ax_key]
+            assert len(rms_list) == len(rms_error_list), "rms and rms error lists have different length!"
+
+            ########
+            # plot #
+            ########
+
+            # n < len(k_array) if the scan was aborted
+            n = len(rms_list)
+            ax[i].errorbar(self.quad_k_array[:n], rms_list, yerr=rms_error_list, c="b", capsize=3)
+
+            #################
+            # plot settings #
+            #################
+
+            ax[i].set_xlabel("k1 [kG]")
+            ax[i].set_ylabel("fitted rms [um]")
+
+            quad_pv_root = self.QuadPVDropdown.currentText()
+            ax[i].set_title(f"{quad_pv_root} quad scan, {ax_key} axis wire scan")
+
+        fig.tight_layout()
+        self.QuadScanPlot_canvas.draw_idle()
+
+        return fig, ax
+
     def scan_all(self, area="L2", axis="X"):
         if area == "L2" and axis == "X":
             self.scan(sec="LI11", loc="444", axis="X", plot_axes=self.frame_7_axes, plot_canvas=self.frame_7_canvas,
@@ -610,6 +908,21 @@ class MyGui(QtWidgets.QWidget):
         elif area == "IP" and axis == "XY":
             self.singlesscan(axis="X", progressBar=self.progressBar_1)
             self.singlesscan(axis="Y", progressBar=self.progressBar_1)
+
+    def update_quad_k_array(self):
+        """Make the quad scan array from k min to k max in n steps."""
+        try:
+            k_min = float(self.QuadKMinBox.text())
+            k_max = float(self.QuadKMaxBox.text())
+            n_steps = int(self.QuadStepsBox.text())
+        except ValueError:
+            return  # a box is empty or not a number yet
+
+        if n_steps < 1:
+            return
+
+        self.quad_k_array = np.linspace(k_min, k_max, n_steps)
+        print("Quad k array:", self.quad_k_array)
 
     # This selects thet current active wire.
     def wire_selection_changed(self, selected_wire):
